@@ -1,6 +1,10 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 /**
  * 
@@ -16,8 +20,8 @@ public class Ejercicio1 {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		ejercicio1();
-
+		// ejercicio1();
+		decodificarCadena();
 	}
 
 	private static void ejercicio1() {
@@ -48,7 +52,23 @@ public class Ejercicio1 {
 		System.out.println("Fin del juego");
 
 	}
-	
-	
 
+	private static void decodificarCadena() {
+		System.out.println("Introduce cadena: ");
+		Scanner teclado = new Scanner(System.in);
+		String cad = teclado.nextLine();
+		List<String> list = new ArrayList<String>();
+		StringTokenizer st = new StringTokenizer(cad, "-+*=", true);
+		while (st.hasMoreTokens()) {
+			String id = st.nextToken();
+            String desc = st.nextToken();
+            list.add(id + " " + desc);
+		}
+		Iterator<String> iter = list.iterator();
+		while (iter.hasNext())
+		    System.out.println(iter.next());
+
+	}
+	
+	
 }
