@@ -21,7 +21,9 @@ public class Ejercicio1 {
 	 */
 	public static void main(String[] args) {
 		// ejercicio1();
-		decodificarCadena();
+		// decodificarCadena();
+		JuegoDelNumero game = new JuegoDelNumero();
+        game.start();
 	}
 
 	private static void ejercicio1() {
