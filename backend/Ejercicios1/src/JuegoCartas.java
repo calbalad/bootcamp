@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.Scanner;
 
 /**
  * 
@@ -34,6 +35,8 @@ public class JuegoCartas {
 		System.out.println(baraja.size());
 		repartir(jugadores, 5);
 		System.out.println(baraja.size());
+		comparar();
+
 	}
 
 	public static void barajar(ArrayList<Carta> baraja) {
@@ -42,26 +45,35 @@ public class JuegoCartas {
 
 	public static void iniciarJugadores() {
 		for (int i = 0; i < numJugadores; i++) {
-			Jugador jugador = new Jugador();
+			System.out.println("Nombre del jugador " + (i + 1));
+			Scanner sc = new Scanner(System.in);
+	        String name = sc.nextLine();
+			Jugador jugador = new Jugador(name);
 			jugadores.add(jugador);
 		}
 	}
-	
+
 	public static void repartir(ArrayList<Jugador> jugadores, int numCartas) {
 		for (int i = 0; i < numCartas; i++) {
 			for (Jugador jugador : jugadores) {
-				jugador.addCarta(baraja.get(baraja.size()-1));
-				baraja.remove(baraja.size()-1);
+				jugador.addCarta(baraja.get(baraja.size() - 1));
+				baraja.remove(baraja.size() - 1);
 			}
 		}
 	}
-	
-	
-	public static void comparar(Carta carta1, Carta  carta2) {
-		// TODO: añadir comparaciones con puntuaciones
-		if (carta1.getPalo() == carta2.getPalo() && carta1.getValor() == carta2.getValor()) {
-			System.out.println("Son iguales");
+
+	public static void comparar() {
+		Carta carta = jugadores.get(0).getCarta();
+		Jugador jugadorGanador = jugadores.get(0);
+		int max = jugadores.get(0).getCarta().getPuntuacion();
+		for (Jugador jugador : jugadores) {
+			if(max < jugador.getCarta().getPuntuacion()) {
+				max = jugador.getCarta().getPuntuacion();
+				carta = jugador.getCarta();
+				jugadorGanador = jugador;
+			}
 		}
+		System.out.println("La carta mas alta es del jugador: " + jugadorGanador.getNombre() + " , con la carta: " + carta.getValor() + " " + carta.getPalo());
 	}
 
 }

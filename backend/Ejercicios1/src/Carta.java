@@ -20,6 +20,9 @@ public class Carta {
 		this.puntuacion = puntuacion;
 	}
 
+	public Carta() {
+	}
+
 	public int getPuntuacion() {
 		return puntuacion;
 	}
