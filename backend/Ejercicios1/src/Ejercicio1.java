@@ -22,9 +22,15 @@ public class Ejercicio1 {
 	public static void main(String[] args) {
 		// ejercicio1();
 		// decodificarCadena();
-		//JuegoDelNumero game = new JuegoDelNumero();
-        //game.start();
-		
+		// JuegoDelNumero game = new JuegoDelNumero();
+		// game.start();
+		Calculadora calc = new Calculadora();
+		System.out.println(calc.calcularCadena("3+4+3,4-7*1="));
+//		System.out.println(calc.calcula("3", "+"));
+//		System.out.println(calc.calcula("4", "+"));
+//		System.out.println(calc.calcula("3,4", "-"));
+//		System.out.println(calc.calcula("7", "*"));
+//		System.out.println(calc.calcula("1", "="));
 	}
 
 	private static void ejercicio1() {
@@ -64,14 +70,13 @@ public class Ejercicio1 {
 		StringTokenizer st = new StringTokenizer(cad, "-+*=", true);
 		while (st.hasMoreTokens()) {
 			String id = st.nextToken();
-            String desc = st.nextToken();
-            list.add(id + " " + desc);
+			String desc = st.nextToken();
+			list.add(id + " " + desc);
 		}
 		Iterator<String> iter = list.iterator();
 		while (iter.hasNext())
-		    System.out.println(iter.next());
+			System.out.println(iter.next());
 
 	}
-	
-	
+
 }
