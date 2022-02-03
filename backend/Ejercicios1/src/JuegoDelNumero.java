@@ -4,66 +4,58 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 public class JuegoDelNumero {
-	
-	private static final int randomlimit = 100;
-    private static Random random;
-	
+
+	private int random;
+    private int intentos;
+    private boolean encontrado;
+    private String resultado;
+
 	public JuegoDelNumero() {
-		random = new Random();
 	}
-	
+
 	public void start() {
-        String command;
-        Scanner input = new Scanner(System.in);
+		String command;
+		Scanner input = new Scanner(System.in);
 
-        while (true) {
-            System.out.println("commands: salir, jugar");
-            System.out.print(">> ");
+		while (true) {
+			System.out.println("commands: salir, jugar");
+			System.out.print(">> ");
 
-            command = input.next();
+			command = input.next();
 
-            if (command.equals("salir")) {
-                return;
-            }
+			if (command.equals("salir")) {
+				return;
+			}
 
-            if (command.equals("jugar")) {
-                nextTurn(input);
-            } else {
-                System.out.println("comando desconocido");
-            }
-        }
-    }
-
-    private void nextTurn(Scanner input) {
-        int tries = 10;
-        int secretNumber = random.nextInt(randomlimit);
-        int inputNumber;
-        System.out.println("Número: " + secretNumber);
-        for (int i = 0; i < tries; i++) {
-			try {
-				inputNumber = Integer.parseInt(
-			            JOptionPane.showInputDialog("Introduce número: ")); 
-				if (inputNumber == secretNumber) {
-					JOptionPane.showMessageDialog(null, "¡Ganaste!");
-					break;
-				} else if (inputNumber < secretNumber) {
-					JOptionPane.showMessageDialog(null, "El número es mayor");
-				} else if (inputNumber > secretNumber) {
-					JOptionPane.showMessageDialog(null, "El número es menor");
-				}
-			} catch (NumberFormatException e) {
-				System.out.println(e);
-				JOptionPane.showMessageDialog(null, "Entrada no váida", "Error", JOptionPane.ERROR_MESSAGE);
-				if (i >= 0) {
-					i--;
-				}
+			if (command.equals("jugar")) {
+				inicializar();
+			} else {
+				System.out.println("comando desconocido");
 			}
 		}
-       
-        System.out.println("You needed too many attempts!");
+	}
 
-        return;
-    }
+	private void nextTurn(int numero) {
+		System.out.println("Número: " + random);
+		try {
+			if (numero == random) {
+				encontrado = true;
+				resultado = "¡Ganaste!";
+			} else if (numero < random) {
+				resultado = "El número es mayor";
+			} else if (numero > random) {
+				resultado = "El número es menor";
+			}
+		} catch (NumberFormatException e) {
+			resultado = "Entrada no váida";
+		}
+	}
 	
+	public void inicializar() {
+	     random = (new Random()).nextInt(100) + 1;
+	     intentos = 0;
+	     encontrado = false;
+	     resultado = "Pendiente de empezar";
+		}
 
 }

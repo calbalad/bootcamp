@@ -38,4 +38,10 @@ public class Calculadora {
 		return (double) Math.round(agregate * 100000d) / 100000d;
 	}
 
+	public static Double division(double op1, double op2) {
+		if (op2 == 0)
+			throw new ArithmeticException("/ by zero");
+		return op1 / op2;
+	}
+
 }
