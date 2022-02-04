@@ -5,57 +5,58 @@ import javax.swing.JOptionPane;
 
 public class JuegoDelNumero {
 
-	private int random;
-    private int intentos;
-    private boolean encontrado;
-    private String resultado;
+	int random;
+	private int intentos;
+	private boolean encontrado;
+	private String resultado;
 
 	public JuegoDelNumero() {
+		inicializar();
 	}
 
-	public void start() {
-		String command;
-		Scanner input = new Scanner(System.in);
-
-		while (true) {
-			System.out.println("commands: salir, jugar");
-			System.out.print(">> ");
-
-			command = input.next();
-
-			if (command.equals("salir")) {
-				return;
-			}
-
-			if (command.equals("jugar")) {
-				inicializar();
-			} else {
-				System.out.println("comando desconocido");
-			}
-		}
-	}
-
-	private void nextTurn(int numero) {
-		System.out.println("Número: " + random);
+	public void start(String movimiento) {
 		try {
-			if (numero == random) {
-				encontrado = true;
-				resultado = "¡Ganaste!";
-			} else if (numero < random) {
-				resultado = "El número es mayor";
-			} else if (numero > random) {
-				resultado = "El número es menor";
-			}
+			nextTurn(Integer.parseInt(movimiento));
 		} catch (NumberFormatException e) {
-			resultado = "Entrada no váida";
+			throw new NumberFormatException("No es un número.");
 		}
+	}
+
+	public void nextTurn(int numero) {
+		System.out.println("Número: " + random);
+		if (getFinalizado()) {
+			resultado = "El juego a finalizado";
+		}
+		intentos += 1;
+		if (numero == random) {
+			encontrado = true;
+			resultado = "¡Ganaste!";
+		} else if (intentos >= 10) {
+        	resultado = "Se acabaron los intentos, el número era el " + random;
+        } else if (numero < random) {
+			resultado = "El número es mayor";
+		} else if (numero > random) {
+			resultado = "El número es menor";
+		}
+	}
+
+	public boolean getFinalizado() {
+		return intentos >= 10 || encontrado;
 	}
 	
+	public String getResultado() {
+		return resultado;
+	}
+
 	public void inicializar() {
-	     random = (new Random()).nextInt(100) + 1;
-	     intentos = 0;
-	     encontrado = false;
-	     resultado = "Pendiente de empezar";
-		}
+		random = (new Random()).nextInt(100) + 1;
+		intentos = 0;
+		encontrado = false;
+		resultado = "Pendiente de empezar";
+	}
+	
+	public int getJugada() {
+		return intentos;
+	}
 
 }

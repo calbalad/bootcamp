@@ -31,6 +31,9 @@ public class Ejercicio1 {
 //		System.out.println(calc.calcula("3,4", "-"));
 //		System.out.println(calc.calcula("7", "*"));
 //		System.out.println(calc.calcula("1", "="));
+		JuegoDelNumero juego = new JuegoDelNumero();
+		juego.inicializar();
+		System.out.println(juego.random);
 	}
 
 	private static void ejercicio1() {
