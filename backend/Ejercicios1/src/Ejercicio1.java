@@ -24,18 +24,14 @@ public class Ejercicio1 {
 		// decodificarCadena();
 		// JuegoDelNumero game = new JuegoDelNumero();
 		// game.start();
-		Calculadora calc = new Calculadora();
-		System.out.println(calc.calcularCadena("3+4+3,4-7*1="));
+		//Calculadora calc = new Calculadora();
+		//System.out.println(calc.calcularCadena("3+4+3,4-7*1="));
 //		System.out.println(calc.calcula("3", "+"));
 //		System.out.println(calc.calcula("4", "+"));
 //		System.out.println(calc.calcula("3,4", "-"));
 //		System.out.println(calc.calcula("7", "*"));
 //		System.out.println(calc.calcula("1", "="));
-		JuegoDelNumero juego = new JuegoDelNumero();
-		juego.inicializar();
-		System.out.println(juego.random);
 	}
-
 	private static void ejercicio1() {
 		var rnd = new Random();
 		int num = rnd.nextInt(100);

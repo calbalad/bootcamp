@@ -23,7 +23,6 @@ public class JuegoDelNumero {
 	}
 
 	public void nextTurn(int numero) {
-		System.out.println("Número: " + random);
 		if (getFinalizado()) {
 			resultado = "El juego a finalizado";
 		}
