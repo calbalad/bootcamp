@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 
 public class JuegoDelNumero {
 
-	int random;
+	int numeroAdivinar;
 	private int intentos;
 	private boolean encontrado;
 	private String resultado;
@@ -27,14 +27,14 @@ public class JuegoDelNumero {
 			resultado = "El juego a finalizado";
 		}
 		intentos += 1;
-		if (numero == random) {
+		if (numero == numeroAdivinar) {
 			encontrado = true;
 			resultado = "¡Ganaste!";
 		} else if (intentos >= 10) {
-        	resultado = "Se acabaron los intentos, el número era el " + random;
-        } else if (numero < random) {
+        	resultado = "Se acabaron los intentos, el número era el " + numeroAdivinar;
+        } else if (numero < numeroAdivinar) {
 			resultado = "El número es mayor";
-		} else if (numero > random) {
+		} else if (numero > numeroAdivinar) {
 			resultado = "El número es menor";
 		}
 	}
@@ -48,7 +48,7 @@ public class JuegoDelNumero {
 	}
 
 	public void inicializar() {
-		random = (new Random()).nextInt(100) + 1;
+		numeroAdivinar = (new Random()).nextInt(100) + 1;
 		intentos = 0;
 		encontrado = false;
 		resultado = "Pendiente de empezar";

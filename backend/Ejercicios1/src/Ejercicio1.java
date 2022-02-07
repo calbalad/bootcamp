@@ -20,7 +20,7 @@ public class Ejercicio1 {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// ejercicio1();
+		// adivinaNumero();
 		// decodificarCadena();
 		// JuegoDelNumero game = new JuegoDelNumero();
 		// game.start();
@@ -32,27 +32,28 @@ public class Ejercicio1 {
 //		System.out.println(calc.calcula("7", "*"));
 //		System.out.println(calc.calcula("1", "="));
 	}
-	private static void ejercicio1() {
+	private static void adivinaNumero() {
 		var rnd = new Random();
-		int num = rnd.nextInt(100);
-		System.out.println("Número: " + num);
+		int numeroAleatorio = rnd.nextInt(100);
+		System.out.println("Número: " + numeroAleatorio);
 		Scanner teclado = new Scanner(System.in);
 		for (int i = 0; i < 10; i++) {
 			System.out.println("Introduce número: ");
-			String cad = teclado.nextLine();
+			String cadena = teclado.nextLine();
 			try {
-				int inp = Integer.parseInt(cad);
-				if (num == inp) {
+				int numeroIntroducido = Integer.parseInt(cadena);
+				if (numeroAleatorio == numeroIntroducido) {
 					System.out.println("¡Ganaste!");
 					break;
-				} else if (num < inp) {
+				} else if (numeroAleatorio < numeroIntroducido) {
 					System.out.println("El número es mayor");
-				} else if (num > inp) {
+				} else if (numeroAleatorio > numeroIntroducido) {
 					System.out.println("El número es menor");
 				}
 			} catch (NumberFormatException e) {
 				System.out.println("Entrada no váida");
 				if (i >= 0) {
+					//Descontar si falla
 					i--;
 				}
 			}

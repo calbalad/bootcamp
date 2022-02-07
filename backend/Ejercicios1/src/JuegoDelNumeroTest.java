@@ -2,8 +2,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assumptions.assumingThat;
 
 import java.util.Iterator;
-import java.util.Random;
-
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -21,7 +19,7 @@ class JuegoDelNumeroTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		juego = new JuegoDelNumero();
-		juego.random = 50;
+		juego.numeroAdivinar = 50;
 	}
 
 	@Test
@@ -31,12 +29,12 @@ class JuegoDelNumeroTest {
 
 	@Test
 	void test_Inicializar() {
-		juego.random = 0;
+		juego.numeroAdivinar = 0;
 		juego.inicializar();
 		assertAll("Inicializar", 
 				() -> assertEquals("Pendiente de empezar", juego.getResultado()),
 				() -> assertEquals(0, juego.getJugada()),
-				() -> assertTrue(0 < juego.random && juego.random <= 100, "rango entre 1 y 100"));
+				() -> assertTrue(0 < juego.numeroAdivinar && juego.numeroAdivinar <= 100, "rango entre 1 y 100"));
 	}
 
 	@Nested
@@ -71,7 +69,7 @@ class JuegoDelNumeroTest {
 				juego.nextTurn(30);
 			}
 			assertAll("Jugada", 
-					() -> assertEquals("Se acabaron los intentos, el número era el " + juego.random, juego.getResultado()));
+					() -> assertEquals("Se acabaron los intentos, el número era el " + juego.numeroAdivinar, juego.getResultado()));
 		}
 	}
 }
