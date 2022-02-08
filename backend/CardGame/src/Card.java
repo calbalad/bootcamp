@@ -4,11 +4,13 @@ import java.util.List;
 
 public class Card {
 
-	private Card() {
+	private Card(CardNumber cn, CardSuit cs) {
+		this.cardNumber = cn;
+		this.cardSuit = cs;
 	}
 
-	private CardNumber cardNumber;
-	private CardSuit cardSuit;
+	private final CardNumber cardNumber;
+	private final CardSuit cardSuit;
 
 	public CardNumber getCardNumber() {
 		return cardNumber;
@@ -22,9 +24,7 @@ public class Card {
 		List<Card> cardList = new ArrayList<Card>();
 		for (CardSuit suits : CardSuit.values()) {
 			for (CardNumber cardNums : CardNumber.values()) {
-				Card card = new Card();
-				card.cardNumber = cardNums;
-				card.cardSuit = suits;
+				Card card = new Card(cardNums, suits);
 				cardList.add(card);
 			}
 		}
