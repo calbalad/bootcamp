@@ -32,14 +32,17 @@ class CardTest {
 	@Test
 	void testGetCards() {
 		cards = Card.getCards();
-		assertTrue(cards.size() == 52);
-		assert new HashSet<Card>(cards).size() == cards.size();
+		int cardNumbersSize = CardNumber.values().length;
+		int cardSuitSize = CardSuit.values().length;
+		assertEquals(cards.size(), cardNumbersSize * cardSuitSize);
+		assertEquals(cards.size(), new HashSet<Card>(cards).size());
+		
 	}
 
 	@Test
 	void testCompareTo() {
 		cards = Card.getCards();
-		assertAll("Comparate", () -> assertEquals(1, cards.get(1).compareTo(cards.get(0))), // Card >
+		assertAll("Compare", () -> assertEquals(1, cards.get(1).compareTo(cards.get(0))), // Card >
 				() -> assertEquals(-1, cards.get(0).compareTo(cards.get(4))), // Card <
 				() -> assertEquals(0, cards.get(0).compareTo(cards.get(0))) // Card ==
 		);
@@ -49,7 +52,7 @@ class CardTest {
 	void testshuffleCards() {
 		cards = Card.getCards();
 		Card.shuffleCards(cards);
-		assert new HashSet<Card>(cards).size() == cards.size();
+		assertEquals(cards.size(), new HashSet<Card>(cards).size());
 	}
 
 }
