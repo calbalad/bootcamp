@@ -23,4 +23,6 @@ public class Player {
 	public void setResult(String result) {
 		this.result = result;
 	}
+	
+	
 }
