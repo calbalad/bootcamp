@@ -28,62 +28,62 @@ class MovimientoTest {
 
 	@Test
 	void testMovimiento() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testGetPosIni() {
-		fail("Not yet implemented");
+		assertDoesNotThrow(() -> new Movimiento("H8H3"));
 	}
 
 	@Test
 	void testSetPosIni() {
-		fail("Not yet implemented");
+		
 	}
 
 	@Test
 	void testGetPosFin() {
-		fail("Not yet implemented");
+		
 	}
 
 	@Test
 	void testSetPosFin() {
-		fail("Not yet implemented");
+		
 	}
 
 	@Test
-	void testEsVertical() {
-		fail("Not yet implemented");
+	void testEsVertical() throws JuegoException {
+		assertTrue(new Movimiento("H3H4").EsVertical());
+		assertTrue(new Movimiento("C3C8").EsVertical());
+		assertFalse(new Movimiento("H3C6").EsVertical());
 	}
 
 	@Test
-	void testEsHorizontal() {
-		fail("Not yet implemented");
+	void testEsHorizontal() throws JuegoException {
+		assertTrue(new Movimiento("H3C3").EsHorizontal());
+		assertTrue(new Movimiento("C8A8").EsHorizontal());
+		assertFalse(new Movimiento("H3C6").EsHorizontal());
 	}
 
 	@Test
-	void testEsDiagonal() {
-		fail("Not yet implemented");
+	void testEsDiagonal() throws JuegoException {
+		assertTrue(new Movimiento("B1A2").EsDiagonal());
+		assertTrue(new Movimiento("D1C3").EsDiagonal());
 	}
 
 	@Test
 	void testSaltoVertical() {
-		fail("Not yet implemented");
+		
 	}
 
 	@Test
 	void testSaltoHorizontal() {
-		fail("Not yet implemented");
+		
 	}
 
 	@Test
 	void testDeltaFila() {
-		fail("Not yet implemented");
+		
 	}
 
 	@Test
 	void testSaltodeltaColumna() {
-		fail("Not yet implemented");
+		
 	}
 
 }

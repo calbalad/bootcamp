@@ -33,15 +33,15 @@ public class Movimiento {
 	}
 
 	public boolean EsVertical() {
-		return true;
+		return posIni.getLaColumna() == posFin.getLaColumna() && posIni.getLaFila() != posFin.getLaFila();
 	}
 
 	public boolean EsHorizontal() {
-		return true;
+		return posIni.getLaColumna() != posFin.getLaColumna() && posIni.getLaFila() == posFin.getLaFila();
 	}
 
 	public boolean EsDiagonal() {
-		return true;
+		return EsHorizontal() == EsVertical();
 	}
 
 	public int SaltoVertical() {
