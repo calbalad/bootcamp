@@ -8,7 +8,7 @@ public class Calculadora {
 
 	public Calculadora() {
 	}
-
+	String cadena = "";
 	public double calcularCadena(String cadena) {
 		List<String> list = new ArrayList<String>();
 		StringTokenizer st = new StringTokenizer(cadena, "-+*=/", true);
@@ -19,7 +19,8 @@ public class Calculadora {
 		}
 		Iterator<String> iter = list.iterator();
 		while (iter.hasNext())
-			System.out.println(iter.next());
+			//System.out.println(iter.next());
+			this.cadena += iter.next() + "\n";
 
 		double agregate = Double.parseDouble(list.get(0).split(" ")[0].replace(",", "."));
 		int o = 1;
@@ -42,6 +43,10 @@ public class Calculadora {
 		if (op2 == 0)
 			throw new ArithmeticException("/ by zero");
 		return op1 / op2;
+	}
+	
+	public String getCadena() {
+		return this.cadena;
 	}
 
 }
