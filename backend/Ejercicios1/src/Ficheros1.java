@@ -21,7 +21,7 @@ public class Ficheros1 {
 				"C:\\Eclipse\\curso\\backend\\Ejercicios1\\src\\test");
 	}
 
-	public static void leeFichero(String inFichero) {
+	public static void leeFichero(String inFichero) throws IOException {
 		try {
 			File fichero = new File(inFichero);
 			Scanner lectorFichero = new Scanner(fichero);
@@ -31,8 +31,6 @@ public class Ficheros1 {
 				double res = calc.calcularCadena(data);
 				escribir(calc.getCadena(), Double.toString(res),
 						"C:\\Eclipse\\curso\\backend\\Ejercicios1\\src\\Salida.txt");
-				System.out.println(data);
-				System.out.println(calc.getCadena());
 			}
 			lectorFichero.close();
 		} catch (FileNotFoundException e) {
@@ -45,11 +43,10 @@ public class Ficheros1 {
 		File myObj = new File(to);
 	}
 
-	public static void escribir(String cadena, String resultado, String archivo) {
+	public static void escribir(String cadena, String resultado, String archivo) throws IOException {
 		File log = new File(archivo);
 		try {
 			if (!log.exists()) {
-				System.out.println("We had to make a new file.");
 				log.createNewFile();
 			}
 
@@ -60,10 +57,8 @@ public class Ficheros1 {
 			bufferedWriter.write("----------\n");
 			bufferedWriter.write(resultado + "\n\n\n");
 			bufferedWriter.close();
-
-			System.out.println("Done");
 		} catch (IOException e) {
-			System.out.println("COULD NOT LOG!!");
+			throw new IOException("No existe log");
 		}
 	}
 
@@ -95,12 +90,12 @@ public class Ficheros1 {
 			File newFile = newFile(destDir, zipEntry);
 			if (zipEntry.isDirectory()) {
 				if (!newFile.isDirectory() && !newFile.mkdirs()) {
-					throw new IOException("Failed to create directory " + newFile);
+					throw new IOException("Error al crear el directorio " + newFile);
 				}
 			} else {
 				File parent = newFile.getParentFile();
 				if (!parent.isDirectory() && !parent.mkdirs()) {
-					throw new IOException("Failed to create directory " + parent);
+					throw new IOException("Error al crear el directorio " + parent);
 				}
 				FileOutputStream fos = new FileOutputStream(newFile);
 				int len;
@@ -122,7 +117,7 @@ public class Ficheros1 {
 		String destFilePath = destFile.getCanonicalPath();
 
 		if (!destFilePath.startsWith(destDirPath + File.separator)) {
-			throw new IOException("Entry is outside of the target dir: " + zipEntry.getName());
+			throw new IOException("La entrada esta fuera del fichero destino: " + zipEntry.getName());
 		}
 
 		return destFile;
