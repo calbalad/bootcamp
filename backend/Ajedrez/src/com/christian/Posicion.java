@@ -4,40 +4,42 @@ public class Posicion {
 	private int laFila;
 	private int laColumna;
 
-	public Posicion(int laFila, int laColumna) {
+	public Posicion(int laColumna, int laFila) throws JuegoException {
 		super();
-		this.laFila = laFila;
-		this.laColumna = laColumna;
+		if (laFila >= 1 && laFila <= 8 && laColumna >= 1 &&  laColumna <= 8) {
+			this.laFila = laFila;
+			this.laColumna = laColumna;
+		} else {
+			throw new JuegoException();
+		}
 	}
 	
-	public Posicion(char laFila, char laColumna) {
+	public Posicion(char laColumna, char laFila) throws JuegoException {
 		super();
-		this.laFila = laFila;
-		this.laColumna = laColumna;
+		if (Character.isDigit(laFila)) 
+			laFila = (char) Character.getNumericValue(laFila);
+		int columna = Math.abs(((65 - laColumna))) + 1;
+		if (columna >= 1 && columna <= 8 && laFila >= 1 &&  laFila <= 8) {
+			this.laFila = laFila;
+			this.laColumna = columna;
+		}else {
+			throw new JuegoException();
+		}
 	}
 
 	public int getLaFila() {
 		return laFila;
 	}
 
-	public void setLaFila(int laFila) {
-		this.laFila = laFila;
-	}
 
 	public int getLaColumna() {
 		return laColumna;
 	}
 
-	public void setLaColumna(int laColumna) {
-		this.laColumna = laColumna;
-	}
 
 	public boolean Equals(Posicion posicion) {
-		 if (posicion.equals(this)) {
-				return true;
-			} else {
-			 return false;
-		 }
+		if (posicion.laColumna == this.laColumna && posicion.laFila == this.laFila) 
+			return true;
+		return false;
 	}
-
 }

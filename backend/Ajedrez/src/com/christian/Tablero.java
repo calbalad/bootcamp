@@ -1,7 +1,7 @@
 package com.christian;
 
 public class Tablero {
-
+	private Pieza[][] piezas = new Pieza[8][8];
 	private static final Pieza Pieza = null;
 
 	public Pieza Escaque(int posicion1, int posicion2) {
