@@ -1,3 +1,4 @@
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -9,7 +10,6 @@ public class Ficheros1 {
 		leeFichero();
 		creaFichero();
 	}
-
 
 	public static void leeFichero() {
 		try {
@@ -33,19 +33,27 @@ public class Ficheros1 {
 	public static void creaFichero() {
 		File myObj = new File("Salida.txt");
 	}
-	
+
 	public static void escribir(String cadena, String resultado) {
-		try {
-		      FileWriter myWriter = new FileWriter("C:\\\\Eclipse\\\\curso\\\\backend\\\\Ejercicios1\\\\src\\\\Salida.txt");
-		      myWriter.write(cadena);
-		      myWriter.write("----------\n");
-		      myWriter.write(resultado);
-		      myWriter.close();
-		      System.out.println("Successfully wrote to the file.");
-		    } catch (IOException e) {
-		      System.out.println("An error occurred.");
-		      e.printStackTrace();
+		File log = new File("C:\\\\Eclipse\\\\curso\\\\backend\\\\Ejercicios1\\\\src\\\\Salida.txt");
+		try{
+		    if(!log.exists()){
+		        System.out.println("We had to make a new file.");
+		        log.createNewFile();
 		    }
+
+		    FileWriter fileWriter = new FileWriter(log, true);
+
+		    BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+			bufferedWriter.write(cadena);
+			bufferedWriter.write("----------\n");
+			bufferedWriter.write(resultado + "\n\n\n");
+		    bufferedWriter.close();
+
+		    System.out.println("Done");
+		} catch(IOException e) {
+		    System.out.println("COULD NOT LOG!!");
+		}
 	}
 
 }
