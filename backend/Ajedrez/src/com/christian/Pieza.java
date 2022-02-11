@@ -1,6 +1,6 @@
 package com.christian;
 
-public class Pieza {
+public abstract class Pieza {
 	private Color elColor;
 	
 	public Color Color() {
@@ -8,14 +8,12 @@ public class Pieza {
 	}
 
 	
-	public Pieza(com.christian.Color elColor) {
+	public Pieza(Color elColor) {
 		super();
 		this.elColor = elColor;
 	}
 
-	protected boolean esValido(Movimiento movimiento, Tablero tablero) {
-		return true;
-	}
+	protected abstract boolean esValido(Movimiento movimiento, Tablero tablero);
 	
 	public void Mover(Movimiento movimiento, Tablero tablero) {
 		

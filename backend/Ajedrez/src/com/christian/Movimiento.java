@@ -1,14 +1,12 @@
 package com.christian;
 
-import org.hamcrest.core.IsNull;
-
 public class Movimiento {
 	public Posicion posIni;
 	public Posicion posFin;
 
 	public Movimiento(String movimiento) throws JuegoException {
 		super();
-		if (movimiento != null) {
+		if (movimiento != null && movimiento.length() == 4) {
 			this.posIni = new Posicion(movimiento.charAt(0), movimiento.charAt(1));
 			this.posFin = new Posicion(movimiento.charAt(2), movimiento.charAt(3));
 		} else {
@@ -20,16 +18,8 @@ public class Movimiento {
 		return posIni;
 	}
 
-	public void setPosIni(Posicion posIni) {
-		this.posIni = posIni;
-	}
-
 	public Posicion getPosFin() {
 		return posFin;
-	}
-
-	public void setPosFin(Posicion posFin) {
-		this.posFin = posFin;
 	}
 
 	public boolean EsVertical() {
@@ -40,24 +30,34 @@ public class Movimiento {
 		return posIni.getLaColumna() != posFin.getLaColumna() && posIni.getLaFila() == posFin.getLaFila();
 	}
 
-	public boolean EsDiagonal() {
-		return EsHorizontal() == EsVertical();
+	public boolean EsDiagonal() throws JuegoException {
+		return SaltoHorizontal() == SaltoVertical();
 	}
 
-	public int SaltoVertical() {
-		return 0;
+	public int SaltoVertical() throws JuegoException {
+		return Math.abs(posFin.getLaFila() - posIni.getLaFila());
 	}
 
-	public int SaltoHorizontal() {
-		return 0;
+	public int SaltoHorizontal() throws JuegoException {
+		return Math.abs(posFin.getLaColumna() - posIni.getLaColumna());
 	}
 
-	public int deltaFila() {
-		return 0;
+	public int deltaFila() throws JuegoException {
+		if (posFin.getLaFila() < posIni.getLaFila())
+			return -1;
+		else if (posFin.getLaFila() > posIni.getLaFila()) 
+			return 1;
+		else
+			return 0;
 	}
 
-	public int SaltodeltaColumna() {
-		return 0;
+	public int deltaColumna() throws JuegoException {
+		if (posFin.getLaColumna() < posIni.getLaColumna())
+			return -1;
+		else if (posFin.getLaColumna() > posIni.getLaColumna())
+			return 1;
+		else
+			return 0;
 	}
 
 }
