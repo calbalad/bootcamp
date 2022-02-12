@@ -13,7 +13,7 @@ public abstract class Pieza {
 		this.elColor = elColor;
 	}
 
-	protected abstract boolean esValido(Movimiento movimiento, Tablero tablero);
+	protected abstract boolean esValido(Movimiento movimiento, Tablero tablero) throws JuegoException;
 	
 	public void Mover(Movimiento movimiento, Tablero tablero) {
 		
