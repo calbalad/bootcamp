@@ -31,7 +31,7 @@ class JuegoTest {
 		Juego juego = new Juego();
 		juego.Inicializar();
 		juego.Jugada("D2D4");
-		juego.Jugada("G8F6");
+		juego.Jugada("G8F4");
 		juego.Jugada("G1F3");
 		juego.Jugada("G7G6");
 		juego.Jugada("C2C4");

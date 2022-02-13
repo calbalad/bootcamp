@@ -7,13 +7,11 @@ public class Alfil extends Pieza {
 	}
 
 	protected boolean esValido(Movimiento movimiento, Tablero tablero) throws JuegoException {
-		if (movimiento.posIni == movimiento.posFin) {
+		if (movimiento.posIni == movimiento.posFin)
 			return false;
-		}
 
-		if (movimiento.SaltoVertical() != movimiento.SaltoHorizontal()) {
+		if (movimiento.SaltoVertical() != movimiento.SaltoHorizontal())
 			return false;
-		}
 
 		int rowOffset, colOffset;
 
@@ -31,7 +29,6 @@ public class Alfil extends Pieza {
 
 		int y = movimiento.posIni.getLaColumna() + colOffset;
 		for (int x = movimiento.posIni.getLaFila() + rowOffset; x != movimiento.posFin.getLaFila(); x += rowOffset) {
-
 			if (tablero.Escaque(x, y) != null) {
 				return false;
 			}

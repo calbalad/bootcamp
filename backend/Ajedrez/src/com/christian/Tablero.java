@@ -2,9 +2,10 @@ package com.christian;
 
 public class Tablero {
 	private Pieza[][] tablero = new Pieza[8][8];
-	
+
 	/**
 	 * Devuelve la pieza del escaque solicitado
+	 * 
 	 * @param Columna: 1, Fila: 1
 	 * @return devuelce la Pieza
 	 */
@@ -14,13 +15,14 @@ public class Tablero {
 
 	/**
 	 * Devuelve la pieza del escaque solicitado
+	 * 
 	 * @param Columna: 'A', Fila: '1'
 	 * @return devuelce la Pieza
 	 */
 	public Pieza Escaque(Posicion posicion) {
 		return tablero[posicion.getLaColumna() - 1][posicion.getLaFila() - 1];
 	}
-	
+
 	public void setEscaque(int posicion1, int posicion2, Pieza pieza) {
 		tablero[posicion1 - 1][posicion2 - 1] = pieza;
 	}
@@ -60,13 +62,13 @@ public class Tablero {
 
 	/**
 	 * Mueve la pieza pasando la posición en notación internacional
+	 * 
 	 * @param A2A3
 	 */
 	public void Mover(Movimiento movimiento) throws JuegoException {
-		setEscaque(movimiento.getPosFin().getLaColumna(), movimiento.getPosFin().getLaFila(),
-				Escaque(movimiento.getPosIni().getLaColumna(), movimiento.getPosIni().getLaFila()));
-		QuitaPieza(movimiento.getPosIni().getLaColumna(), movimiento.getPosIni().getLaFila());
-
+			setEscaque(movimiento.getPosFin().getLaColumna(), movimiento.getPosFin().getLaFila(),
+					Escaque(movimiento.getPosIni().getLaColumna(), movimiento.getPosIni().getLaFila()));
+			QuitaPieza(movimiento.getPosIni().getLaColumna(), movimiento.getPosIni().getLaFila());
 	}
 
 	public Object Clone() {

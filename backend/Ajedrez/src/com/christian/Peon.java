@@ -16,9 +16,8 @@ public class Peon extends Pieza {
 	}
 
 	private boolean Avanza(Movimiento movimiento) throws JuegoException {
-		if ((movimiento.SaltoVertical() == movimiento.deltaColumna()) && movimiento.SaltoHorizontal() == 0) {
+		if ((movimiento.SaltoVertical() == movimiento.deltaColumna()) && movimiento.SaltoHorizontal() == 0)
 			return true;
-		}
 		return false;
 	}
 
@@ -46,7 +45,7 @@ public class Peon extends Pieza {
 	}
 
 	public void Mover(Movimiento movimiento, Tablero tablero) throws JuegoException {
-		if (esValido(movimiento, tablero) && Avanza(movimiento)) {
+		if (esValido(movimiento, tablero)) {
 			tablero.QuitaPieza(movimiento.getPosFin());
 			tablero.setEscaque(movimiento.getPosFin(),
 					tablero.Escaque(movimiento.getPosIni().getLaColumna() - 1, movimiento.getPosIni().getLaFila() - 1));
