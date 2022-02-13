@@ -3,7 +3,11 @@ package com.christian;
 public class Movimiento {
 	public Posicion posIni;
 	public Posicion posFin;
-
+	
+	/**
+	 * Constructor para la serie de números aleatorios
+	 * @param Movimiento: Movimieto en notación internacional
+	 */
 	public Movimiento(String movimiento) throws JuegoException {
 		super();
 		if (movimiento != null && movimiento.length() == 4) {

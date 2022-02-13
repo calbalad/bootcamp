@@ -3,7 +3,11 @@ package com.christian;
 public class Posicion {
 	private int laFila;
 	private int laColumna;
-
+	
+	/**
+	 * Crear posición con enteros
+	 * @param Columna: 1, Fila: 1
+	 */
 	public Posicion(int laColumna, int laFila) throws JuegoException {
 		super();
 		if (laFila >= 1 && laFila <= 8 && laColumna >= 1 &&  laColumna <= 8) {
@@ -14,6 +18,10 @@ public class Posicion {
 		}
 	}
 	
+	/**
+	 * Crear posición con chars
+	 * @param Columna: 'A', Fila: '1'
+	 */
 	public Posicion(char laColumna, char laFila) throws JuegoException {
 		super();
 		if (Character.isDigit(laFila)) 

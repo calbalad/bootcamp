@@ -7,6 +7,10 @@ public class Juego {
 	private Color elTurno;
 	private boolean partidaActiva = false;
 
+	/**
+	 * Constructor para la serie de números aleatorios
+	 * @return Tablero: Devuelve el tablero de la partida ya clonado
+	 */
 	public Tablero getElTablero() {
 		elTablero.Clone();
 		return elTablero;
@@ -48,7 +52,11 @@ public class Juego {
 		elTablero.setEscaque(7, 8, new Caballo(Color.NEGRO));
 		elTablero.setEscaque(8, 8, new Torre(Color.NEGRO));
 	}
-
+	
+	/**
+	 * Jugar nuevo movimiento
+	 * @param Movimiento: Movimieto en notación internacional
+	 */
 	public void Jugada(String string) throws JuegoException {
 		Movimiento movimiento = new Movimiento(string);
 		Mover(movimiento);
