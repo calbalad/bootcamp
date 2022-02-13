@@ -45,7 +45,7 @@ public class Movimiento {
 	public int deltaFila() throws JuegoException {
 		if (posFin.getLaFila() < posIni.getLaFila())
 			return -1;
-		else if (posFin.getLaFila() > posIni.getLaFila()) 
+		else if (posFin.getLaFila() > posIni.getLaFila())
 			return 1;
 		else
 			return 0;

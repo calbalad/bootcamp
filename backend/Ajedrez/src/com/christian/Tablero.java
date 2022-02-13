@@ -27,8 +27,9 @@ public class Tablero {
 
 	public boolean HayPieza(int posicion1, int posicion2) {
 		if (esValido(posicion1) && esValido(posicion2))
-			if (tablero[posicion1 - 1][posicion2 - 1] == null)
+			if (tablero[posicion1 - 1][posicion2 - 1] == null) {
 				return false;
+			}
 		return true;
 	}
 
@@ -48,10 +49,10 @@ public class Tablero {
 	}
 
 	public void Mover(Movimiento movimiento) throws JuegoException {
-		if (HayPieza(movimiento.getPosIni()) && !HayPiezasEntre(movimiento)) {
-			setEscaque(movimiento.getPosIni().getLaColumna()-1,movimiento.getPosIni().getLaFila()-1, Escaque(movimiento.getPosIni().getLaColumna()-1, movimiento.getPosIni().getLaFila()-1));
-			QuitaPieza(movimiento.getPosIni().getLaColumna()-1, movimiento.getPosIni().getLaFila()-1);
-		}
+		setEscaque(movimiento.getPosFin().getLaColumna(), movimiento.getPosFin().getLaFila(),
+				Escaque(movimiento.getPosIni().getLaColumna(), movimiento.getPosIni().getLaFila()));
+		QuitaPieza(movimiento.getPosIni().getLaColumna(), movimiento.getPosIni().getLaFila());
+
 	}
 
 	public Object Clone() {
@@ -68,21 +69,30 @@ public class Tablero {
 		if (movimiento.EsVertical()) {
 			for (int i = 1; i < movimiento.SaltoVertical(); i++) {
 				if (HayPieza(movimiento.getPosIni().getLaColumna(),
-						movimiento.getPosIni().getLaFila() + (i * movimiento.deltaFila()))) 
-					return true;
+						movimiento.getPosIni().getLaFila() + (i * movimiento.deltaFila())))
+					if (Escaque(movimiento.getPosIni().getLaColumna(), movimiento.getPosIni().getLaFila())
+							.Color() == Escaque(movimiento.getPosFin().getLaColumna(),
+									movimiento.getPosFin().getLaFila()).Color())
+						return true;
 			}
 		} else if (movimiento.EsHorizontal()) {
 			for (int i = 1; i < Math.abs(movimiento.SaltoHorizontal()); i++) {
 				if (HayPieza(movimiento.getPosIni().getLaColumna() + (i * movimiento.deltaColumna()),
 						movimiento.getPosIni().getLaFila()))
-					return true;
+					if (Escaque(movimiento.getPosIni().getLaColumna(), movimiento.getPosIni().getLaFila())
+							.Color() == Escaque(movimiento.getPosFin().getLaColumna(),
+									movimiento.getPosFin().getLaFila()).Color())
+						return true;
 			}
 
 		} else if (movimiento.EsHorizontal()) {
-			for(int i = 1; i < Math.abs(movimiento.SaltoHorizontal()) ; i++ ) {
-				if (HayPieza(movimiento.getPosIni()
-						.getLaColumna()+(i * movimiento.deltaColumna()), movimiento.getPosIni().getLaFila()+(i * movimiento.deltaFila()))) {
-					return true;
+			for (int i = 1; i < Math.abs(movimiento.SaltoHorizontal()); i++) {
+				if (HayPieza(movimiento.getPosIni().getLaColumna() + (i * movimiento.deltaColumna()),
+						movimiento.getPosIni().getLaFila() + (i * movimiento.deltaFila()))) {
+					if (Escaque(movimiento.getPosIni().getLaColumna(), movimiento.getPosIni().getLaFila())
+							.Color() == Escaque(movimiento.getPosFin().getLaColumna(),
+									movimiento.getPosFin().getLaFila()).Color())
+						return true;
 				}
 			}
 		}

@@ -11,7 +11,7 @@ public class Rey extends Pieza {
 			if (movimiento.posIni == movimiento.posFin) {
 				return false;
 			}
-			if (movimiento.getPosIni().getLaColumna() - movimiento.getPosFin().getLaColumna() == 2
+			if (movimiento.SaltoHorizontal() == 2
 					&& movimiento.getPosIni().getLaColumna() == movimiento.getPosFin().getLaColumna()) {
 				if (tablero.HayPieza(movimiento.getPosFin().getLaFila(), movimiento.getPosIni().getLaColumna() + 1)
 						|| tablero.HayPieza(movimiento.getPosFin().getLaFila(),
@@ -19,7 +19,7 @@ public class Rey extends Pieza {
 					return false;
 				}
 
-			} else if (movimiento.getPosIni().getLaColumna() - movimiento.getPosFin().getLaColumna() == 3
+			} else if (movimiento.SaltoHorizontal() == 3
 					&& movimiento.getPosIni().getLaColumna() == movimiento.getPosFin().getLaColumna()) {
 				if (tablero.HayPieza(movimiento.getPosFin().getLaColumna(), movimiento.getPosIni().getLaColumna() - 1)
 						|| tablero.HayPieza(movimiento.getPosFin().getLaFila(),

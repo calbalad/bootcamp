@@ -7,7 +7,14 @@ public class Dama extends Pieza {
 		super(color);
 	}
 
-	protected boolean esValido(Movimiento movimiento, Tablero tablero) {
-		return true;
+	protected boolean esValido(Movimiento movimiento, Tablero tablero) throws JuegoException {
+		if (movimiento.EsHorizontal() || movimiento.EsVertical() || movimiento.EsDiagonal()) {
+			if ((tablero.HayPieza(movimiento.getPosFin()) && tablero.Escaque(movimiento.getPosFin()).Color() != tablero.Escaque(movimiento.getPosIni()).Color())) {
+				return true;
+			}else if(!tablero.HayPieza(movimiento.getPosFin())){
+				return true;
+			}
+		}
+		return false;
 	}
 }

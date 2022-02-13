@@ -15,7 +15,7 @@ public abstract class Pieza {
 
 	protected abstract boolean esValido(Movimiento movimiento, Tablero tablero) throws JuegoException;
 	
-	public void Mover(Movimiento movimiento, Tablero tablero) {
+	public void Mover(Movimiento movimiento, Tablero tablero) throws JuegoException {
 		
 	}
 }
