@@ -73,19 +73,19 @@ WHERE rental.return_date IS NULL AND DATEDIFF(NOW(), rental.rental_date) > film.
 ORDER BY `Fecha de devolución`;
 
 -- Elaborar el ranking de los países que más alquilan las películas de GINA DEGENERES.
-SELECT country.country, count(rental_id) AS RANKING 
+SELECT actor.actor_id,actor.first_name,actor.last_name, country.country 'Pais', count(rental.rental_id) AS RANKING 
 FROM rental
-INNER JOIN inventory ON inventory.inventory_id = rental.rental_id
+INNER JOIN inventory ON inventory.inventory_id = rental.inventory_id
 INNER JOIN film ON film.film_id = inventory.film_id
 INNER JOIN film_actor ON film.film_id = film_actor.film_id
 INNER JOIN actor ON actor.actor_id = film_actor.actor_id
-INNER JOIN customer ON customer.customer_id = rental.rental_id
+INNER JOIN customer ON customer.customer_id = rental.customer_id
 INNER JOIN address ON customer.address_id = address.address_id
 INNER JOIN city ON city.city_id = address.city_id
 INNER JOIN country ON country.country_id = city.country_id
-WHERE actor.first_name = 'GINA' AND actor.last_name = 'DEGENERES'
 GROUP BY actor.actor_id, country.country
-ORDER BY RANKING DESC;
+HAVING actor.first_name LIKE "GINA"
+ORDER BY RANKING DESC
 
 
 
