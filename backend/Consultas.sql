@@ -18,11 +18,12 @@ FROM film
 ORDER BY `Coste por minuto` DESC;
 
 -- Obtener los códigos y medias de gasto de los clientes que han gastado mas de 100 en menos de 25 operaciones.
-SELECT customer_id, AVG(amount) `Media`, SUM(amount) `Gasto en los primeros 100`
-FROM payment 
-GROUP BY customer_id 
-HAVING SUM(amount) > 100 
-LIMIT 24;
+select customer_id, sum(amount)
+from (select customer_id, amount, row_number() over (partition by customer_id order by last_update) rn
+      from payment) t
+where rn < 24
+group by customer_id
+HAVING sum(amount) > 100
 
 -- Obtener los 5 nombres de actor más repetidos (aprox).
 SELECT first_name, COUNT(*) `Nº veces` FROM actor GROUP BY first_name ORDER BY `Nº veces` DESC LIMIT 5;
