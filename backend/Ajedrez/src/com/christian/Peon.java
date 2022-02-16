@@ -6,6 +6,7 @@ public class Peon extends Pieza {
 		super(color);
 	}
 
+	@Override
 	protected boolean esValido(Movimiento movimiento, Tablero tablero) throws JuegoException {
 		if (Avanza(movimiento) && !tablero.HayPieza(movimiento.getPosFin())) {
 			return true;
@@ -13,6 +14,7 @@ public class Peon extends Pieza {
 			return true;
 		}
 		return false;
+		
 	}
 
 	private boolean Avanza(Movimiento movimiento) throws JuegoException {
@@ -44,11 +46,17 @@ public class Peon extends Pieza {
 		return false;
 	}
 
+	@Override
 	public void Mover(Movimiento movimiento, Tablero tablero) throws JuegoException {
 		if (esValido(movimiento, tablero)) {
 			tablero.QuitaPieza(movimiento.getPosFin());
-			tablero.setEscaque(movimiento.getPosFin(),
-					tablero.Escaque(movimiento.getPosIni().getLaColumna() - 1, movimiento.getPosIni().getLaFila() - 1));
+			if (tablero.Escaque(movimiento.getPosIni().getLaColumna() - 1, movimiento.getPosIni().getLaFila() - 1)
+					.esValido(movimiento, tablero)) {
+				tablero.setEscaque(movimiento.getPosFin(), tablero.Escaque(movimiento.getPosIni().getLaColumna() - 1,
+						movimiento.getPosIni().getLaFila() - 1));
+			}
+		} else {
+			throw new JuegoException("Movimiento no valido");
 		}
 	}
 

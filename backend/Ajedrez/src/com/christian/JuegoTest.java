@@ -27,13 +27,16 @@ class JuegoTest {
 	}
 
 	@Test
-	void test() throws JuegoException {
+	void testJuego() throws JuegoException {
 		Juego juego = new Juego();
 		juego.Inicializar();
 		juego.Jugada("D2D4");
-		juego.Jugada("G8F4");
+		assertNotNull(juego.getElTablero().Escaque(4, 4));
+		assertTrue(juego.getElTablero().Escaque(4, 4).getClass().equals(new Peon(Color.BLANCO).getClass()));
+		juego.Jugada("G8F6");
 		juego.Jugada("G1F3");
 		juego.Jugada("G7G6");
+		assertTrue(juego.getElTablero().Escaque(7, 6).getClass().equals(new Peon(Color.NEGRO).getClass()));
 		juego.Jugada("C2C4");
 		juego.Jugada("F8G7");
 		juego.Jugada("B1C3");

@@ -36,5 +36,9 @@ public class Alfil extends Pieza {
 		}
 
 		return true;
+
+//		if (movimiento.EsDiagonal() && !tablero.HayPiezasEntre(movimiento)) 
+//		return true;
+//	return false;
 	}
 }
