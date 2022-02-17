@@ -8,18 +8,28 @@ public class Peon extends Pieza {
 
 	@Override
 	protected boolean esValido(Movimiento movimiento, Tablero tablero) throws JuegoException {
-		if (Avanza(movimiento) && !tablero.HayPieza(movimiento.getPosFin())) {
+		if (this.Avanza(movimiento) && !tablero.HayPieza(movimiento.getPosFin())) {
 			return true;
 		} else if (PuedeComer(movimiento, tablero)) {
 			return true;
 		}
 		return false;
-		
 	}
 
 	private boolean Avanza(Movimiento movimiento) throws JuegoException {
-		if ((movimiento.SaltoVertical() == movimiento.deltaColumna()) && movimiento.SaltoHorizontal() == 0)
+		
+		if (movimiento.SaltoVertical() == 1 && movimiento.SaltoHorizontal() == 0)
 			return true;
+		
+		if (movimiento.getPosIni().getLaFila() == 2 && this.Color().toString() == Color.BLANCO.toString()
+				&& (movimiento.SaltoVertical() == 1 || movimiento.SaltoVertical() == 2))
+			return true;
+
+		if (movimiento.getPosIni().getLaFila() == 7 && this.Color().toString() == Color.NEGRO.toString()
+				&& (movimiento.SaltoVertical() == 1 || movimiento.SaltoVertical() == 2))
+			return true;
+
+
 		return false;
 	}
 
@@ -28,10 +38,10 @@ public class Peon extends Pieza {
 	}
 
 	private boolean PuedeComer(Movimiento movimiento, Tablero tablero) throws JuegoException {
-		if (movimiento.EsDiagonal() && (movimiento.SaltoHorizontal() == movimiento.deltaFila())
-				&& tablero.HayPieza(movimiento.getPosFin()))
-			if (tablero.Escaque(movimiento.getPosFin()).Color() != tablero.Escaque(movimiento.getPosIni()).Color())
-				return true;
+		if (movimiento.EsDiagonal() && movimiento.SaltoHorizontal() == 1 && tablero.HayPieza(movimiento.getPosFin())
+				&& (tablero.Escaque(movimiento.getPosFin()).Color() != this.Color()))
+			return true;
+
 		return false;
 	}
 
@@ -49,12 +59,7 @@ public class Peon extends Pieza {
 	@Override
 	public void Mover(Movimiento movimiento, Tablero tablero) throws JuegoException {
 		if (esValido(movimiento, tablero)) {
-			tablero.QuitaPieza(movimiento.getPosFin());
-			if (tablero.Escaque(movimiento.getPosIni().getLaColumna() - 1, movimiento.getPosIni().getLaFila() - 1)
-					.esValido(movimiento, tablero)) {
-				tablero.setEscaque(movimiento.getPosFin(), tablero.Escaque(movimiento.getPosIni().getLaColumna() - 1,
-						movimiento.getPosIni().getLaFila() - 1));
-			}
+			tablero.Mover(movimiento);
 		} else {
 			throw new JuegoException("Movimiento no valido");
 		}

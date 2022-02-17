@@ -63,6 +63,7 @@ class MovimientoTest {
 	@Test
 	void testSaltoVertical() throws JuegoException {
 		assertEquals(1, new Movimiento("A1A2").SaltoVertical());
+		assertEquals(2, new Movimiento("A2A4").SaltoVertical());
 		assertEquals(3, new Movimiento("A1A4").SaltoVertical());
 		assertNotEquals(2, new Movimiento("A1A2").SaltoVertical());
 		// assertThrows(JuegoException.class, () -> new

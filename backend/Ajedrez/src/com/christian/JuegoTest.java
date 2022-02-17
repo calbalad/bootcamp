@@ -46,8 +46,7 @@ class JuegoTest {
 		juego.Jugada("E2E4");
 		juego.Jugada("D5C3");
 		juego.Jugada("B2C3");
-		juego.Jugada("C2B5");
-		juego.Jugada("C3C5");
+		juego.Jugada("C7C5");
 		juego.Jugada("A1B1");
 		assertTrue(juego.getElTablero().Escaque(4, 4).getClass().equals(new Peon(Color.BLANCO).getClass()));
 		assertTrue(juego.getElTablero().Escaque(5, 4).getClass().equals(new Peon(Color.BLANCO).getClass()));
