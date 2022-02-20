@@ -31,10 +31,10 @@ class PiezaTest {
 		Tablero tablero = new Tablero();
 		var pieza = new Peon(Color.BLANCO);
 		var pieza2 = new Peon(Color.NEGRO);
-		tablero.setEscaque(1, 2, pieza);
+		tablero.setEscaque(5, 2, pieza);
 		tablero.setEscaque(2, 3, pieza2);
-		pieza.Mover(new Movimiento("A2B3"), tablero);
-		assertNotNull(tablero.Escaque(2,3));
+		pieza.Mover(new Movimiento("E2E4"), tablero);
+		assertNotNull(tablero.Escaque(5,4));
 	}
 	
 	@Test
@@ -63,17 +63,14 @@ class PiezaTest {
 	}
 	
 	@Test
-	void testDama() throws JuegoException {
+	void testRey() throws JuegoException {
 		Tablero tablero = new Tablero();
-		var pieza = new Dama(Color.BLANCO);
-		var pieza2 = new Peon(Color.BLANCO);
-		tablero.setEscaque(2, 1, pieza);
-		tablero.setEscaque(2,2, pieza2);
-		pieza.Mover(new Movimiento("B1C3"), tablero);
-		assertNotNull(tablero.Escaque(3,3));
-		pieza.Mover(new Movimiento("C3B1"), tablero);
-		assertNotNull(tablero.Escaque(2,1));
+		var pieza = new Rey(Color.BLANCO);
+		tablero.setEscaque(5, 8, pieza);
+		pieza.Mover(new Movimiento("E8D7"), tablero);
+		assertNotNull(tablero.Escaque(4,7));
 	}
+	
 	
 	
 

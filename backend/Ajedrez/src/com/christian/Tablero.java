@@ -85,32 +85,30 @@ public class Tablero {
 	}
 
 	public boolean HayPiezasEntre(Movimiento movimiento) throws JuegoException {
-		if (movimiento.EsVertical()) {
-			for (int i = 1; i < movimiento.SaltoVertical(); i++) {
-				if (HayPieza(movimiento.getPosIni().getLaColumna(), movimiento.getPosIni().getLaFila() + (i + movimiento.deltaFila())))
-					if (Escaque(movimiento.getPosIni().getLaColumna(), movimiento.getPosIni().getLaFila()).Color() == Escaque(movimiento.getPosFin().getLaColumna(), movimiento.getPosFin().getLaFila()).Color())
-						return true;
-			}
-		} else if (movimiento.EsHorizontal()) {
-			for (int i = 1; i < Math.abs(movimiento.SaltoHorizontal()); i++) {
-				if (HayPieza(movimiento.getPosIni().getLaColumna() + (i + movimiento.deltaColumna()),
-						movimiento.getPosIni().getLaFila()))
-					if (Escaque(movimiento.getPosIni().getLaColumna(), movimiento.getPosIni().getLaFila())
-							.Color() == Escaque(movimiento.getPosFin().getLaColumna(),
-									movimiento.getPosFin().getLaFila()).Color())
-						return true;
-			}
+		var flag = false;
+		int rowOffset, colOffset;
 
-		} else if (movimiento.EsHorizontal()) {
-			for (int i = 1; i < Math.abs(movimiento.SaltoHorizontal()); i++) {
-				if (HayPieza(movimiento.getPosIni().getLaColumna() + (i + movimiento.deltaColumna()), movimiento.getPosIni().getLaFila() + (i + movimiento.deltaFila()))) {
-					if (Escaque(movimiento.getPosIni().getLaColumna(), movimiento.getPosIni().getLaFila()).Color() == Escaque(movimiento.getPosFin().getLaColumna(),
-									movimiento.getPosFin().getLaFila()).Color())
-						return true;
-				}
-			}
+		if (movimiento.posIni.getLaFila() < movimiento.posFin.getLaFila()) {
+			rowOffset = 1;
+		} else {
+			rowOffset = -1;
 		}
-		return false;
+
+		if (movimiento.posIni.getLaColumna() < movimiento.posFin.getLaColumna()) {
+			colOffset = 1;
+		} else {
+			colOffset = -1;
+		}
+
+		int y = movimiento.posIni.getLaColumna() + colOffset;
+		for (int x = movimiento.posIni.getLaFila() + rowOffset; x != movimiento.posFin.getLaFila(); x += rowOffset) {
+			if (this.Escaque(x, y) != null) {
+				if (this.Escaque(x, y).Color() ==  Escaque(movimiento.posFin.getLaColumna(), movimiento.posFin.getLaFila()).Color()) 
+					return true;
+			}
+			y += colOffset;
+		}
+		return flag;
 	}
 
 }

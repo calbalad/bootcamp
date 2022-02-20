@@ -76,26 +76,29 @@ public class Juego {
 			throw new JuegoException("No hay pieza que mover");
 		}
 
-		if (elTablero.Escaque(movimiento.getPosIni()).Color() != elTurno) {
-			throw new JuegoException("La pieza no es tuya");
+		if (elTablero.Escaque(movimiento.getPosIni()).Color().toString() != elTurno.toString()) {
+			throw new JuegoException("La pieza no es tuya, turno de: " + elTurno.toString());
 		}
 
 		if (elTablero.HayPieza(movimiento.getPosFin())
-				&& elTablero.Escaque(movimiento.getPosFin()).Color() == elTurno) {
+				&& elTablero.Escaque(movimiento.getPosFin()).Color().toString() == elTurno.toString()) {
 			throw new JuegoException("No te puedes comer a ti mismo");
 		}
-		//Mover(movimiento);
-		elTablero.Escaque(movimiento.getPosIni()).Mover(movimiento, elTablero);
-		
-		CambiaTurno();
+		Mover(movimiento);
+		this.CambiaTurno();
 	}
 
 	private void Mover(Movimiento movimiento) throws JuegoException {
-		this.elTablero.Mover(movimiento);
+		elTablero.Escaque(movimiento.getPosIni()).Mover(movimiento, elTablero);
+		
 	}
 
 	private void CambiaTurno() {
-		elTurno = (elTurno == Color.BLANCO) ? Color.NEGRO : Color.BLANCO;
+		if(elTurno == Color.BLANCO) {
+			elTurno = Color.NEGRO;
+		}else {
+			elTurno = Color.BLANCO;
+		}
 	}
 
 	private void PromocionaPeon(Object obj, PromocionEventArgs evt) {
