@@ -1,6 +1,7 @@
 package com.christian;
 
 import java.util.Iterator;
+import java.util.function.Consumer;
 
 import org.junit.jupiter.params.shadow.com.univocity.parsers.common.processor.AbstractRowProcessor;
 
@@ -8,6 +9,7 @@ public class Juego {
 	private Tablero elTablero;
 	private Color elTurno;
 	private boolean partidaActiva = false;
+	private Consumer<Pieza> notifica;
 
 	/**
 	 * Constructor para la serie de números aleatorios
@@ -100,8 +102,12 @@ public class Juego {
 			elTurno = Color.BLANCO;
 		}
 	}
+	
+	public void Promociona(Object obj, PromocionEventArgs promocion) {
+		
+	}
 
 	private void PromocionaPeon(Object obj, PromocionEventArgs evt) {
-
+		evt.setP((Pieza) obj);
 	}
 }

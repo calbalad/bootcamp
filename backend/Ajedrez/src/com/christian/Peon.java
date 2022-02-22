@@ -17,6 +17,9 @@ public class Peon extends Pieza {
 	}
 
 	private boolean Avanza(Movimiento movimiento) throws JuegoException {
+		if (NecesitaPromocion(movimiento.getPosIni())) {
+			
+		}
 		
 		if (movimiento.SaltoVertical() == 1 && movimiento.SaltoHorizontal() == 0)
 			return true;
@@ -66,7 +69,11 @@ public class Peon extends Pieza {
 	}
 
 	protected void onPromocion(PromocionEventArgs promo) {
-
+		
+	}
+	
+	public void Promocion(Object obj, PromocionEventArgs promocion) {
+		
 	}
 
 }

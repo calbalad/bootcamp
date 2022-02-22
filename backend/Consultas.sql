@@ -5,7 +5,7 @@ where first_name = 'NICK';
 
 -- Obtener una lista con todos los distritos distintos (district en address).
 SELECT DISTINCT district 
-FROM address;
+FROM address ORDER BY district;
 
 -- Obtener las películas sobre agentes secretos (description contiene ‘Secret Agent’).
 SELECT * 
@@ -13,15 +13,15 @@ FROM film
 WHERE description like '%Secret Agent%';
 
 -- Mostrar la lista de las películas mas caras (coste por minuto)
-SELECT title, (rental_rate / LENGTH) `Coste por minuto` 
+SELECT title,rental_rate, LENGTH, (rental_rate / LENGTH) `Coste por minuto` 
 FROM film 
 ORDER BY `Coste por minuto` DESC;
 
 -- Obtener los códigos y medias de gasto de los clientes que han gastado mas de 100 en menos de 25 operaciones.
-SELECT customer_id, sum(amount) `Suma`
+SELECT customer_id, AVG(amount), sum(amount) `Suma`
 FROM (SELECT customer_id, amount, row_number() over (PARTITION BY customer_id ORDER BY last_update) rn
       FROM payment) t
-WHERE rn < 24
+WHERE rn < 25
 GROUP BY customer_id
 HAVING SUM(amount) > 100;
 
@@ -29,7 +29,7 @@ HAVING SUM(amount) > 100;
 SELECT first_name, COUNT(*) `Nº veces` 
 FROM actor 
 GROUP BY first_name 
-ORDER BY `Nº veces` 
+ORDER BY `Nº veces` DESC
 DESC LIMIT 5;
 
 -- Para felicitar el año nuevo chino se necesita el listado con los datos postales de los clientes residentes en China y Taiwan
@@ -73,7 +73,7 @@ WHERE rental.return_date IS NULL AND DATEDIFF(NOW(), rental.rental_date) > film.
 ORDER BY `Fecha de devolución`;
 
 -- Elaborar el ranking de los países que más alquilan las películas de GINA DEGENERES.
-SELECT actor.actor_id,actor.first_name,actor.last_name, country.country 'Pais', count(rental.rental_id) AS RANKING 
+SELECT RANK(), actor.actor_id,actor.first_name,actor.last_name, country.country 'Pais', count(rental.rental_id) AS RANKING 
 FROM rental
 INNER JOIN inventory ON inventory.inventory_id = rental.inventory_id
 INNER JOIN film ON film.film_id = inventory.film_id
