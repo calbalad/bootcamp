@@ -6,10 +6,11 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class Configuracion {
-	
+
 	@Bean
 	@Qualifier("manual")
-	public Servicio miServicio() {
-		return new Servicio();
+	public Servicio miServicio(Dependencia dep) {
+		System.out.println("Creando el servicio de " + dep.getName());
+		return new ServicioMock();
 	}
 }

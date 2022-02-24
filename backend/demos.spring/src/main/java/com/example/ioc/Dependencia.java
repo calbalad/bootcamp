@@ -1,16 +1,18 @@
 package com.example.ioc;
 
-import lombok.Value;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Dependencia {
-	@Value("${mi.config.name}")
-	private String name;
+	@Value("${mi.config.name:'no se'}")
+	private String nombre;
+	
 	public Dependencia() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	public String getName() {
-		return name;
-	}
 
+	public String getName() {
+		return nombre;
+	}
 }
