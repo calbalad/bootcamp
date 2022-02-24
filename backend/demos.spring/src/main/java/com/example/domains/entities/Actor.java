@@ -2,9 +2,16 @@ package com.example.domains.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.PastOrPresent;
 
 import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GenerationTime;
+import org.hibernate.validator.constraints.Length;
+
+import lombok.NonNull;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -23,18 +30,23 @@ public class Actor implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@NotNull
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="actor_id")
 	private int actorId;
 
 	@Column(name="first_name")
+	@NotBlank
+	@Length(min=2, max=45)
 	private String firstName;
 
 	@Column(name="last_name")
+	@Length(min=2, max=45)
 	private String lastName;
 
 	@Column(name="last_update")
 	@Generated(value = GenerationTime.ALWAYS)
+	@PastOrPresent
 	private Timestamp lastUpdate;
 
 	//bi-directional many-to-one association to FilmActor

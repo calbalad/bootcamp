@@ -49,14 +49,14 @@ public class Application implements CommandLineRunner {
 		
 //		jdbc.run();
 //		jdbc.conPlantilla();
-		var a = new Actor("Pepito", "Grillo");
-		dao.save(a);
-		System.out.println(a);
-		a.addFilmActor(1);
-		a.addFilmActor(2);
-		a.addFilmActor(14);
-		dao.save(a);
-		System.out.println(a);
+//		var a = new Actor("Pepito", "Grillo");
+//		dao.save(a);
+//		System.out.println(a);
+//		a.addFilmActor(1);
+//		a.addFilmActor(2);
+//		a.addFilmActor(14);
+//		dao.save(a);
+//		System.out.println(a);
 //		dao.save(new Actor(206, "Grillo", "Pepito", new Timestamp(0)));
 //		dao.deleteById(206);
 //		dao.findAll().forEach(System.out::println);
@@ -67,6 +67,12 @@ public class Application implements CommandLineRunner {
 		
 //		var a = dao.findById(1).get();
 //		a.getFilmActors().forEach(item -> System.out.println(item.getFilm().getTitle()));
+		var a = new Actor(206, "Grillo", "Pepito", new Timestamp(0));
+		if(a.isInvalid())
+			System.out.println(a.getErrorsMessage());
+		else 
+			System.out.println("ok");
+		
 	}
 
 
