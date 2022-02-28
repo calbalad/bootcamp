@@ -4,14 +4,15 @@ import java.io.Serializable;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 import javax.validation.constraints.PastOrPresent;
 
 import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GenerationTime;
 import org.hibernate.validator.constraints.Length;
 
-import lombok.NonNull;
+import com.example.domains.core.entities.EntityBase;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ import java.util.Objects;
 @Entity
 @Table(name="actor")
 @NamedQuery(name="Actor.findAll", query="SELECT a FROM Actor a")
-public class Actor implements Serializable {
+public class Actor extends EntityBase<Actor> implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -47,10 +48,12 @@ public class Actor implements Serializable {
 	@Column(name="last_update")
 	@Generated(value = GenerationTime.ALWAYS)
 	@PastOrPresent
+	@JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
 	private Timestamp lastUpdate;
 
 	//bi-directional many-to-one association to FilmActor
 	@OneToMany(mappedBy="actor", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonIgnore
 	private List<FilmActor> filmActors = new ArrayList<>();
 
 	public Actor() {
@@ -130,8 +133,7 @@ public class Actor implements Serializable {
 		return filmActor;
 	}
 	public FilmActor addFilmActor(int filmId) {
-		var peli = new Film(filmId);
-		var filmActor = new FilmActor(this, peli);
+		var filmActor = new FilmActor(this, new Film(filmId));
 		getFilmActors().add(filmActor);
 		return filmActor;
 	}
