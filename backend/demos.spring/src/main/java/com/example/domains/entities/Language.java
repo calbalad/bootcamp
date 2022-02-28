@@ -4,6 +4,8 @@ import java.io.Serializable;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
 import org.hibernate.validator.constraints.Length;
 
 import com.example.domains.core.entities.EntityBase;
@@ -32,6 +34,7 @@ public class Language  extends EntityBase<Language> implements Serializable {
 	private int languageId;
 
 	@Column(name="last_update")
+	@Generated(value = GenerationTime.ALWAYS)
 	@JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
 	private Timestamp lastUpdate;
 	
@@ -47,8 +50,11 @@ public class Language  extends EntityBase<Language> implements Serializable {
 	private List<Film> filmsVO;
 
 	public Language() {
+		super();
 	}
 
+	 
+	
 	public Language(int languageId) {
 		super();
 		this.languageId = languageId;
