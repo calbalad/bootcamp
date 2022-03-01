@@ -10,6 +10,7 @@ import org.hibernate.validator.constraints.Length;
 
 
 import com.example.domains.core.entities.EntityBase;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -42,6 +43,7 @@ public class City extends EntityBase<City> implements Serializable {
 
 	//bi-directional many-to-one association to Address
 	@OneToMany(mappedBy="city")
+	@JsonIgnore
 	private List<Address> addresses;
 
 	//bi-directional many-to-one association to Country
