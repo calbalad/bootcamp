@@ -36,7 +36,7 @@ public class CiudadesResource {
 
 	@GetMapping
 	public List<CiudadDetailsDTO> getAll() {
-		return srv.getAll().stream().map(item -> CiudadDetailsDTO.from(item)).toList();
+		return srv.getAll().stream().map(CiudadDetailsDTO::from).toList();
 	}
 
 	@GetMapping(path = "/{id}")

@@ -2,6 +2,7 @@ package com.example.application.resources;
 
 import java.net.URI;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
@@ -46,7 +47,7 @@ public class PaisResource {
 	@GetMapping(path = "/{id}/ciudades")
 	@Transactional
 	public List<CiudadShortDTO> getCiudades(@PathVariable int id) throws NotFoundException {
-		return srv.getOne(id).getCities().stream().map(item -> CiudadShortDTO.from(item)).toList();
+		return srv.getOne(id).getCities().stream().map(item -> CiudadShortDTO.from(item)).collect(Collectors.toList());
 	}
 	
 	@PostMapping

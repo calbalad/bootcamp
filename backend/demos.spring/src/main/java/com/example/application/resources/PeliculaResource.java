@@ -103,10 +103,10 @@ public class PeliculaResource {
 			throw new InvalidDataException(entity.getErrorsMessage());
 		srv.change(entity);
 	}
-//
-//	@DeleteMapping("/{id}")
-//	@ResponseStatus(HttpStatus.NO_CONTENT)
-//	public void delete(@PathVariable int id) {
-//		srv.deleteById(id);
-//	}
+
+	@DeleteMapping("/{id}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void delete(@PathVariable int id) {
+		srv.deleteById(id);
+	}
 }
