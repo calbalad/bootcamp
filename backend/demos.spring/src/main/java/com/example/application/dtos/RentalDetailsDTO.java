@@ -25,18 +25,18 @@ public class RentalDetailsDTO {
 	@JsonProperty("fechaDevolucion")
 	@JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
 	private Date returnDate;
-	@JsonProperty("inventarioId")
+	@JsonProperty("clienteId")
 	private int customerId;
 	@JsonProperty("nombreCliente")
 	private String firstName;
 	@JsonProperty("apellidoCliente")
 	private String lastName;
-	@JsonProperty("empleadoId")
+	@JsonProperty("inventarioId")
 	private int inventoryId;
-	@JsonProperty("clienteId")
+	@JsonProperty("empleadoId")
 	private int staffId;
 	@JsonProperty("pago")
-	private List<Integer> payments;
+	private List<PaymentDetailsDTO> payments;
 	@JsonProperty("film")
 	private String film;
 
@@ -51,7 +51,7 @@ public class RentalDetailsDTO {
 				source.getCustomer().getLastName(),
 				source.getInventory().getInventoryId(),
 				source.getStaff().getStaffId(),
-				source.getPayments().stream().map(item -> item.getPaymentId()).sorted().toList(),
+				source.getPayments().stream().map(pago -> PaymentDetailsDTO.from(pago)).toList(),
 				source.getInventory().getFilm().getTitle()
 				);
 	}

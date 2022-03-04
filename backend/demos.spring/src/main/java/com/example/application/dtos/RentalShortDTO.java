@@ -10,7 +10,9 @@ import lombok.Value;
 public class RentalShortDTO {
 	@JsonProperty("id")
 	private int rentalId;
+	@JsonProperty("cliente")
 	private String customer;
+	@JsonProperty("titulo")
 	private String title;
 
 	public static RentalShortDTO from(Rental source) {

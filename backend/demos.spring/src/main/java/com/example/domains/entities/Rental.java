@@ -44,16 +44,14 @@ public class Rental extends EntityBase<Rental> implements Serializable {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="rental_date")
-	@JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
 	private Date rentalDate;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="return_date")
-	@JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
 	private Date returnDate;
 
 	//bi-directional many-to-one association to Payment
-	@OneToMany(mappedBy="rental", cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy="rental", cascade = CascadeType.ALL, orphanRemoval = true)
 	@Valid
 	private List<Payment> payments;
 
@@ -83,6 +81,13 @@ public class Rental extends EntityBase<Rental> implements Serializable {
 		super();
 		this.rentalId = rentalId;
 	}
+	
+	public Rental(int rentalId, @Valid List<Payment> payments, Customer customer) {
+		super();
+		this.rentalId = rentalId;
+		this.payments = payments;
+		this.customer = customer;
+	}
 
 	public Rental(@NotNull int rentalId, Date rentalDate, Date returnDate,
 			@NotNull Customer customer, @NotNull Inventory inventory,
@@ -96,6 +101,7 @@ public class Rental extends EntityBase<Rental> implements Serializable {
 		this.staff = staff;
 	}	
 	
+
 
 	public int getRentalId() {
 		return this.rentalId;

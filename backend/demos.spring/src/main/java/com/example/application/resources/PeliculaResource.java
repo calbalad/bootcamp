@@ -51,7 +51,6 @@ public class PeliculaResource {
 	@Autowired
 	private PeliculaService srv;
 
-
 	@GetMapping
 	public List<PeliculaShortDTO> getAll() {
 		return srv.getByProjection(PeliculaShortDTO.class);
@@ -63,14 +62,15 @@ public class PeliculaResource {
 	}
 
 	@GetMapping(path = "/{id}")
-	public PeliculaDetailsDTO getOneDetails(@PathVariable int id, @RequestParam(required = false, defaultValue = "details") String mode)
-			throws NotFoundException {
-			return PeliculaDetailsDTO.from(srv.getOne(id));
+	public PeliculaDetailsDTO getOneDetails(@PathVariable int id,
+			@RequestParam(required = false, defaultValue = "details") String mode) throws NotFoundException {
+		return PeliculaDetailsDTO.from(srv.getOne(id));
 	}
+
 	@GetMapping(path = "/{id}", params = "mode=edit")
 	public PeliculaEditDTO getOneEdit(@PathVariable int id, @RequestParam(required = true) String mode)
 			throws NotFoundException {
-			return PeliculaEditDTO.from(srv.getOne(id));
+		return PeliculaEditDTO.from(srv.getOne(id));
 	}
 
 	@PostMapping
@@ -84,8 +84,8 @@ public class PeliculaResource {
 		entity = srv.getOne(entity.getFilmId());
 		item.update(entity);
 		srv.change(entity);
-		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-				.buildAndExpand(entity.getFilmId()).toUri();
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(entity.getFilmId())
+				.toUri();
 		return ResponseEntity.created(location).build();
 
 	}
