@@ -13,12 +13,14 @@ import com.example.domains.entities.Staff;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.Value;
 
-@Value
+@Data @NoArgsConstructor @AllArgsConstructor
+@ApiModel(value = "Película editable", description = "Versión editable de los alquileres.")
 public class RentalDTO {
 
 	@JsonProperty("id")
