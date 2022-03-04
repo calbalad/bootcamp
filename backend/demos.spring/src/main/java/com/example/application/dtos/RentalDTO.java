@@ -14,6 +14,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,9 +28,11 @@ public class RentalDTO {
 	private int rentalId;
 	@JsonProperty("fechaAlquiler")
 	@JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+	@ApiModelProperty("Formato de fecha de alquiler yyyy-MM-dd hh:mm:ss")
 	private Date rentalDate;
 	@JsonProperty("fechaDevolucion")
 	@JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+	@ApiModelProperty("Formato de devolución yyyy-MM-dd hh:mm:ss")
 	private Date returnDate;
 	@JsonProperty("inventarioId")
 	private int inventoryId;

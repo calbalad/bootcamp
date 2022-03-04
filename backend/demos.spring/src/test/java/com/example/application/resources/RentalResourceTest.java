@@ -120,8 +120,8 @@ class RentalResourceTest {
 			var rslt = rest.create(listado.get(0));
 			assertNotNull(rslt);
 			assertEquals(HttpStatus.CREATED, rslt.getStatusCode());
-
-			rest.update(1, listado.get(1));
+			
+			rest.update(1, listado.get(0));
 			verify(srv).change(RentalDTO.from(listado.get(0)));
 			
 		}

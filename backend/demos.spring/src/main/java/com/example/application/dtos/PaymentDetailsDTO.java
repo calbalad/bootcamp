@@ -12,6 +12,7 @@ import com.example.domains.entities.Staff;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,6 +26,7 @@ public class PaymentDetailsDTO {
 	@JsonProperty("empleado")
 	private String empleado;
 	@JsonProperty("total")
+	@ApiModelProperty("Precio del pago")
 	private BigDecimal amount;
 	@JsonProperty("fechaDePago")
 	@JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")

@@ -133,6 +133,11 @@ public class RentalResource {
 		if (entity.isInvalid())
 			throw new InvalidDataException(entity.getErrorsMessage());
 		srv.change(entity);
+		
+//		Rental ren = RentalDTO.from(item);
+//		if (ren.isInvalid())
+//			throw new InvalidDataException(ren.getErrorsMessage());
+//		srv.change(ren);
 	}
 
 	@DeleteMapping("/{id}")
