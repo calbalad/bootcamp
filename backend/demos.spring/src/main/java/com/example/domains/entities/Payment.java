@@ -2,6 +2,11 @@ package com.example.domains.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
+import com.example.domains.core.entities.EntityBase;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.math.BigDecimal;
 import java.util.Date;
 import java.sql.Timestamp;
@@ -14,7 +19,7 @@ import java.sql.Timestamp;
 @Entity
 @Table(name="payment")
 @NamedQuery(name="Payment.findAll", query="SELECT p FROM Payment p")
-public class Payment implements Serializable {
+public class Payment extends EntityBase<Payment> implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -29,21 +34,26 @@ public class Payment implements Serializable {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="payment_date")
+	@JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
 	private Date paymentDate;
+	@NotNull
 
 	//bi-directional many-to-one association to Customer
 	@ManyToOne
 	@JoinColumn(name="customer_id")
+	@NotNull
 	private Customer customer;
 
 	//bi-directional many-to-one association to Rental
 	@ManyToOne
 	@JoinColumn(name="rental_id")
+	@NotNull
 	private Rental rental;
 
 	//bi-directional many-to-one association to Staff
 	@ManyToOne
 	@JoinColumn(name="staff_id")
+	@NotNull
 	private Staff staff;
 
 	public Payment() {
