@@ -10,25 +10,24 @@ import javax.validation.Validator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public abstract class EntityBase<E> {
-
+	
 	@Transient
 	@JsonIgnore
 	@SuppressWarnings("unchecked")
 	public Set<ConstraintViolation<E>> getErrors() {
 		Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
-		return validator.validate((E) this);
+		return validator.validate((E)this);
 	}
-
+	
 	@Transient
 	@JsonIgnore
 	public String getErrorsMessage() {
-		if (isValid())
-			return "";
+		if(isValid()) return "";
 		StringBuilder sb = new StringBuilder("ERRORES: ");
 		getErrors().forEach(item -> sb.append(item.getPropertyPath() + ": " + item.getMessage() + ". "));
 		return sb.toString().trim();
 	}
-
+	
 	@Transient
 	@JsonIgnore
 	public boolean isValid() {

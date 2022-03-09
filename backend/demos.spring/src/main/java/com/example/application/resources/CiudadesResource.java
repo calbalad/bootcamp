@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.List;
 
 import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -61,12 +62,6 @@ public class CiudadesResource {
 //			return ResponseEntity.ok(CiudadEditDTO.from(srv.getOne(id)));
 //		else
 //			return ResponseEntity.ok(CiudadDetailsDTO.from(srv.getOne(id)));
-//	}
-
-//	@GetMapping(path = "/{id}/ciudades")
-//	@Transactional
-//	public List<CiudadShortDTO> getCiudades(@PathVariable int id) throws NotFoundException {
-//		return srv.getOne(id).getCities().stream().map(item -> CiudadShortDTO.from(item)).toList();
 //	}
 
 	@PostMapping

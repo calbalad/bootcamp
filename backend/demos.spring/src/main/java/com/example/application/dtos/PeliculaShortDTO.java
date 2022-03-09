@@ -11,7 +11,7 @@ public class PeliculaShortDTO {
 	private int filmId;
 	@JsonProperty("titulo")
 	private String title;
-
+	
 	public static PeliculaShortDTO from(Film source) {
 		return new PeliculaShortDTO(
 				source.getFilmId(),

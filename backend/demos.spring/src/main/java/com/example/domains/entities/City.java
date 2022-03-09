@@ -8,7 +8,6 @@ import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GenerationTime;
 import org.hibernate.validator.constraints.Length;
 
-
 import com.example.domains.core.entities.EntityBase;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -30,7 +29,6 @@ public class City extends EntityBase<City> implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="city_id")
-	
 	private int cityId;
 
 	@NotBlank
@@ -53,25 +51,27 @@ public class City extends EntityBase<City> implements Serializable {
 
 	public City() {
 	}
-
+	
 	public City(int cityId) {
 		super();
 		this.cityId = cityId;
 	}
-	
+
 	public City(int cityId, @NotBlank @Length(max = 50) String city, Country country) {
 		super();
 		this.cityId = cityId;
 		this.city = city;
 		this.country = country;
 	}
-	
+
 	public City(int cityId, @NotBlank @Length(max = 50) String city, List<Address> addresses) {
 		super();
 		this.cityId = cityId;
 		this.city = city;
 		this.addresses = addresses;
 	}
+
+
 
 	public int getCityId() {
 		return this.cityId;
@@ -146,7 +146,5 @@ public class City extends EntityBase<City> implements Serializable {
 	public String toString() {
 		return "City [cityId=" + cityId + ", city=" + city + ", country=" + country + "]";
 	}
-	
-	
 
 }

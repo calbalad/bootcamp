@@ -7,55 +7,52 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.example.domains.contracts.repositories.ActorRepositoy;
-import com.example.domains.contracts.repositories.FilmRepositoy;
-import com.example.domains.contracts.services.ActorService;
-import com.example.domains.contracts.services.PeliculaService;
-import com.example.domains.entities.Actor;
-import com.example.domains.entities.Film;
+import com.example.domains.contracts.repositories.IdiomasRepository;
+import com.example.domains.contracts.services.IdiomasService;
+import com.example.domains.entities.Language;
 import com.example.exceptions.DuplicateKeyException;
 import com.example.exceptions.InvalidDataException;
 import com.example.exceptions.NotFoundException;
 
 @Service
-public class FilmServiceImpl implements PeliculaService {
-	private FilmRepositoy dao;
+public class IdiomasServiceImpl implements IdiomasService {
+	private IdiomasRepository dao;
 	
-	public FilmServiceImpl(FilmRepositoy dao) {
+	public IdiomasServiceImpl(IdiomasRepository dao) {
 		this.dao = dao;
 	}
 	
 	@Override
-	public List<Film> getAll() {
+	public List<Language> getAll() {
 		return dao.findAll();
 	}
 	
 	@Override
-	public Iterable<Film> getAll(Sort sort) {
+	public Iterable<Language> getAll(Sort sort) {
 		return dao.findAll(sort);
 	}
 	@Override
-	public Page<Film> getAll(Pageable pageable) {
+	public Page<Language> getAll(Pageable pageable) {
 		return dao.findAll(pageable);
 	}
 	
 	@Override
 	public <T> List<T> getByProjection(Class<T> type) {
-		return dao.findByFilmIdIsNotNull(type);
+		return dao.findByLanguageIdIsNotNull(type);
 	}
 
 	@Override
 	public <T> Iterable<T> getByProjection(Sort sort, Class<T> type) {
-		return dao.findByFilmIdIsNotNull(sort, type);
+		return dao.findByLanguageIdIsNotNull(sort, type);
 	}
 
 	@Override
 	public <T> Page<T> getByProjection(Pageable pageable, Class<T> type) {
-		return dao.findByFilmIdIsNotNull(pageable, type);
+		return dao.findByLanguageIdIsNotNull(pageable, type);
 	}
 
 	@Override
-	public Film getOne(Integer id) throws NotFoundException {
+	public Language getOne(Integer id) throws NotFoundException {
 		var item = dao.findById(id);
 		if(item.isEmpty())
 			throw new NotFoundException();
@@ -63,35 +60,34 @@ public class FilmServiceImpl implements PeliculaService {
 	}
 	
 	@Override
-	public Film add(Film item) throws DuplicateKeyException, InvalidDataException {
+	public Language add(Language item) throws DuplicateKeyException, InvalidDataException {
 		if(item == null)
 			throw new IllegalArgumentException();
-		if(dao.findById(item.getFilmId()).isPresent())
+		if(dao.findById(item.getLanguageId()).isPresent())
 			throw new DuplicateKeyException();
 		if(item.isInvalid())
 			throw new InvalidDataException(item.getErrorsMessage());
 		return dao.save(item);
 	}
 	@Override
-	public Film change(Film item) throws NotFoundException, InvalidDataException  {
+	public Language change(Language item) throws NotFoundException, InvalidDataException  {
 		if(item == null)
 			throw new IllegalArgumentException();
-		if(dao.findById(item.getFilmId()).isEmpty())
+		if(dao.findById(item.getLanguageId()).isEmpty())
 			throw new NotFoundException();
 		if(item.isInvalid())
 			throw new InvalidDataException(item.getErrorsMessage());
 		return dao.save(item);
 	}
 	@Override
-	public void delete(Film item) {
+	public void delete(Language item) {
 		if(item == null)
 			throw new IllegalArgumentException();
-		deleteById(item.getFilmId());
+		deleteById(item.getLanguageId());
 		
 	}
 	@Override
 	public void deleteById(Integer id) {
 		dao.deleteById(id);
 	}
-
 }

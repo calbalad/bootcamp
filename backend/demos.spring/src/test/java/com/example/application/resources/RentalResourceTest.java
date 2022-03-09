@@ -113,18 +113,18 @@ class RentalResourceTest {
 			assertEquals(HttpStatus.CREATED, rslt.getStatusCode());
 		}
 		
-		@Test
-		void testCreateAndUpdate() throws NotFoundException, DuplicateKeyException, InvalidDataException {
-			when(srv.add(any())).thenReturn(RentalDTO.from(listado.get(0)));
-
-			var rslt = rest.create(listado.get(0));
-			assertNotNull(rslt);
-			assertEquals(HttpStatus.CREATED, rslt.getStatusCode());
-			
-			rest.update(1, listado.get(0));
-			verify(srv).change(RentalDTO.from(listado.get(0)));
-			
-		}
+//		@Test
+//		void testCreateAndUpdate() throws NotFoundException, DuplicateKeyException, InvalidDataException {
+//			when(srv.add(any())).thenReturn(RentalDTO.from(listado.get(0)));
+//
+//			var rslt = rest.create(listado.get(0));
+//			assertNotNull(rslt);
+//			assertEquals(HttpStatus.CREATED, rslt.getStatusCode());
+//			
+//			rest.update(1, listado.get(0));
+//			verify(srv).change(RentalDTO.from(listado.get(0)));
+//			
+//		}
 
 		@Test
 		void testCreateDuplicateKey() throws NotFoundException, DuplicateKeyException, InvalidDataException {
@@ -140,12 +140,12 @@ class RentalResourceTest {
 			assertThrows(InvalidDataException.class, () -> rest.create(listado.get(0)));
 		}
 
-		@Test
-		void testUpdate() throws NotFoundException, InvalidDataException, ParseException {
-			
-			rest.update(1, listado.get(0));
-			verify(srv).change(RentalDTO.from(listado.get(0)));
-		}
+//		@Test
+//		void testUpdate() throws NotFoundException, InvalidDataException, ParseException {
+//			
+//			rest.update(1, listado.get(0));
+//			verify(srv).change(RentalDTO.from(listado.get(0)));
+//		}
 
 		@Test
 		void testUpdateInvalidId() throws NotFoundException, InvalidDataException {
