@@ -80,11 +80,35 @@ function ejercicio6(dni) {
 }
 
 function ejercicio7(str) {
-     var re = /[\W_]/g;
-     var lowStr = str.toLowerCase().replace(re, '');
-     var reverseStr = lowStr.split('').reverse().join(''); 
-     return reverseStr === lowStr;
+  var re = /[\W_]/g;
+  var lowStr = str.toLowerCase().replace(re, "");
+  var reverseStr = lowStr.split("").reverse().join("");
+  return reverseStr === lowStr;
 }
+
+function JuegoNumero(adivina, intentos) {
+  this.random = adivina;
+  let cont = 1;
+  let number = parseInt(
+    prompt("Introduce el numero del 1 al 100: " + random + " Intetos: " + cont)
+  );
+
+  while (number !== random && cont != this.intentos) {
+    number = parseInt(
+      prompt(
+        "Introduce el numero del 1 al 100: " + random + " Intetos: " + cont
+      )
+    );
+    cont++;
+  }
+
+  if (number == random) {
+    alert("El numero es correcto.");
+  } else {
+    alert("Perdiste.");
+  }
+}
+
 
 //console.log(ejercicio1(0, 10));
 
@@ -96,4 +120,4 @@ function ejercicio7(str) {
 
 // ejercicio6("98461641K")
 
-console.log(ejercicio7("A man, a plan, a canal. Panama"))
+console.log(ejercicio7("A man, a plan, a canal. Panama"));
