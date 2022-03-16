@@ -4,19 +4,16 @@ function ejercicio1(min, max) {
 
 function ejercicio2() {
   const random = ejercicio1(0, 100);
-  let cont = 1;
-  let number = parseInt(
-    prompt("Introduce el numero del 1 al 100: " + random + " Intetos: " + cont)
-  );
+  let cont = 0;
 
-  while (number !== random && cont != 10) {
+  do {
     number = parseInt(
       prompt(
         "Introduce el numero del 1 al 100: " + random + " Intetos: " + cont
       )
     );
     cont++;
-  }
+  } while (number !== random && cont != 10) 
 
   if (number == random) {
     alert("El numero es correcto.");
@@ -89,18 +86,14 @@ function ejercicio7(str) {
 function JuegoNumero(adivina, intentos) {
   this.random = adivina;
   let cont = 1;
-  let number = parseInt(
-    prompt("Introduce el numero del 1 al 100: " + random + " Intetos: " + cont)
-  );
-
-  while (number !== random && cont != this.intentos) {
+  do {
     number = parseInt(
       prompt(
         "Introduce el numero del 1 al 100: " + random + " Intetos: " + cont
       )
     );
     cont++;
-  }
+  } while (number !== random && cont != 10) 
 
   if (number == random) {
     alert("El numero es correcto.");
@@ -112,7 +105,7 @@ function JuegoNumero(adivina, intentos) {
 
 //console.log(ejercicio1(0, 10));
 
-//ejercicio2();
+// ejercicio2();
 
 //console.log(ejercicio3("3", 2));
 
@@ -120,4 +113,4 @@ function JuegoNumero(adivina, intentos) {
 
 // ejercicio6("98461641K")
 
-console.log(ejercicio7("A man, a plan, a canal. Panama"));
+console.log(ejercicio7("La ruta nos aporto otro paso natural"));
