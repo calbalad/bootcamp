@@ -1,4 +1,7 @@
-@import url('http://fonts.cdnfonts.com/css/led-digital-7');
+@font-face {
+  font-family: PressStart2P-Regular;
+  src: url("./fonts/PressStart2P-Regular.ttf");
+}
 
 .container {
   max-width: 410px;
@@ -16,8 +19,8 @@
   font-size: 25px;
   color: aliceblue;
   background-color: #3f3f3f;
-  font-family: 'LED Digital 7', sans-serif;
-  font-size: 3em;
+  font-family: "PressStart2P-Regular", sans-serif;
+  font-size: 2em;
 }
 
 .buttons {
