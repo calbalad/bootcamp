@@ -1,0 +1,128 @@
+{
+  "id": "7f39d5b5-e248-4c66-a95f-cec75137d698",
+  "version": "2.0",
+  "name": "test",
+  "url": "http://127.0.0.1:5500/ejercicios-js/calculadora/index.html",
+  "tests": [{
+    "id": "db4daa0f-a5ec-49ca-a40c-14eda3c64bf3",
+    "name": "test1",
+    "commands": [{
+      "id": "15690d41-5af1-4621-85ce-1720765b55e5",
+      "comment": "",
+      "command": "open",
+      "target": "http://127.0.0.1:5500/ejercicios-js/calculadora/index.html",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f77e71dc-fa40-4a8c-a05c-7ba4989cd8e1",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1396x826",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "51ea0f59-ffa6-439f-91c4-fdde17e6a6e7",
+      "comment": "",
+      "command": "click",
+      "target": "css=button:nth-child(11)",
+      "targets": [
+        ["css=button:nth-child(11)", "css:finder"],
+        ["xpath=//button[11]", "xpath:position"],
+        ["xpath=//button[contains(.,'6')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6ffec0ca-8821-45a9-8e0a-9799e2fdc9e9",
+      "comment": "",
+      "command": "click",
+      "target": "css=button:nth-child(12)",
+      "targets": [
+        ["css=button:nth-child(12)", "css:finder"],
+        ["xpath=//button[12]", "xpath:position"],
+        ["xpath=//button[contains(.,'+')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f67e4155-afa3-4262-b080-c5800a2b2447",
+      "comment": "",
+      "command": "click",
+      "target": "css=button:nth-child(11)",
+      "targets": [
+        ["css=button:nth-child(11)", "css:finder"],
+        ["xpath=//button[11]", "xpath:position"],
+        ["xpath=//button[contains(.,'6')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "dcb81e58-8b98-42c8-b8c0-49443b8788fd",
+      "comment": "",
+      "command": "click",
+      "target": "id=equal",
+      "targets": [
+        ["id=equal", "id"],
+        ["css=#equal", "css:finder"],
+        ["xpath=//button[@id='equal']", "xpath:attributes"],
+        ["xpath=//button[20]", "xpath:position"],
+        ["xpath=//button[contains(.,'=')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "cfbe7d89-b710-47d5-bfb9-602630754036",
+      "comment": "",
+      "command": "click",
+      "target": "css=button:nth-child(8)",
+      "targets": [
+        ["css=button:nth-child(8)", "css:finder"],
+        ["xpath=//button[8]", "xpath:position"],
+        ["xpath=//button[contains(.,'-')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "79fc4b91-9574-446e-bb56-9f1e86655c30",
+      "comment": "",
+      "command": "click",
+      "target": "css=button:nth-child(11)",
+      "targets": [
+        ["css=button:nth-child(11)", "css:finder"],
+        ["xpath=//button[11]", "xpath:position"],
+        ["xpath=//button[contains(.,'6')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f3b59b43-863e-4c2f-9d35-aafe0cdbd752",
+      "comment": "",
+      "command": "click",
+      "target": "id=equal",
+      "targets": [
+        ["id=equal", "id"],
+        ["css=#equal", "css:finder"],
+        ["xpath=//button[@id='equal']", "xpath:attributes"],
+        ["xpath=//button[20]", "xpath:position"],
+        ["xpath=//button[contains(.,'=')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a146c58f-6a07-4611-9523-339592dd23a4",
+      "comment": "",
+      "command": "verifyText",
+      "target": "id=display",
+      "targets": [
+        ["id=display", "id"],
+        ["css=#display", "css:finder"],
+        ["xpath=//div[@id='display']", "xpath:attributes"],
+        ["xpath=//section/div/div", "xpath:position"]
+      ],
+      "value": "6"
+    }]
+  }],
+  "suites": [{
+    "id": "1603017e-2896-46ea-8476-b77dd5e2fe53",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["db4daa0f-a5ec-49ca-a40c-14eda3c64bf3"]
+  }],
+  "urls": ["http://127.0.0.1:5500/ejercicios-js/calculadora/index.html"],
+  "plugins": []
+}

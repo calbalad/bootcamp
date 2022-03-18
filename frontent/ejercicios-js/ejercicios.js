@@ -54,9 +54,7 @@ function esPrimo(numero) {
 function ejercicio6(dni) {
   var numero, let, letra;
   var expresion_regular_dni = /^[XYZ]?\d{5,8}[A-Z]$/;
-
-  dni = dni.toUpperCase();
-
+  dni = dni.toUpperCase().trim();
   if (expresion_regular_dni.test(dni) === true) {
     numero = dni.substr(0, dni.length - 1);
     numero = numero.replace("X", 0);
@@ -67,23 +65,25 @@ function ejercicio6(dni) {
     letra = "TRWAGMYFPDXBNJZSQVHLCKET";
     letra = letra.substring(numero, numero + 1);
     if (letra != let) {
-      alert("Dni erroneo, la letra del NIF no se corresponde");
+      /* alert("Dni erroneo, la letra del NIF no se corresponde"); */
+      return false;
     } else {
-      alert("Dni correcto");
+      /* alert("Dni correcto"); */
+      return true;
     }
   } else {
-    alert("Dni erroneo, formato no válido");
+    /* alert("Dni erroneo, formato no válido"); */
+    return false;
   }
 }
 
 function ejercicio7(str) {
-  var re = /[\W_]/g;
-  var lowStr = str.toLowerCase().replace(re, "").normalize("NFD");
+  var lowStr = str.toLowerCase().replace(/[ .,;:_¿?¡!()[\]{}=+\-*/_`~$%^&'"]/g, '').normalize("NFD").replace(/[\u0300-\u036f]/g, '').trim();
   var reverseStr = lowStr.split("").reverse().join("");
   return reverseStr === lowStr;
 }
 
-function JuegoNumero(adivina, intentos) {
+function JuegoNumerofun(adivina, intentos) {
   this.random = adivina;
   let cont = 1;
   do {
