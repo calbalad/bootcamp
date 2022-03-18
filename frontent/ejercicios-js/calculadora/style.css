@@ -1,3 +1,5 @@
+@import url('http://fonts.cdnfonts.com/css/led-digital-7');
+
 .container {
   max-width: 410px;
   margin: 10vh auto 0 auto;
@@ -14,6 +16,8 @@
   font-size: 25px;
   color: aliceblue;
   background-color: #3f3f3f;
+  font-family: 'LED Digital 7', sans-serif;
+  font-size: 3em;
 }
 
 .buttons {

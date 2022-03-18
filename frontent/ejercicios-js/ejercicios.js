@@ -78,7 +78,7 @@ function ejercicio6(dni) {
 
 function ejercicio7(str) {
   var re = /[\W_]/g;
-  var lowStr = str.toLowerCase().replace(re, "");
+  var lowStr = str.toLowerCase().replace(re, "").normalize("NFD");
   var reverseStr = lowStr.split("").reverse().join("");
   return reverseStr === lowStr;
 }
