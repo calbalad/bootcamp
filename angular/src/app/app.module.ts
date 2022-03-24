@@ -6,28 +6,26 @@ import { ERROR_LEVEL, LoggerService, MyCoreModule } from 'src/lib/my-core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import { MainModule } from './main';
 import { SecurityModule } from './security';
 import { DemosComponent } from './demos/demos.component';
 import { CommonServicesModule } from './common-services';
-
+import { DinamicoComponent } from './dinamico/dinamico.component';
 
 @NgModule({
-  declarations: [AppComponent, DemosComponent],
+  declarations: [
+    AppComponent,
+    DemosComponent,
+    DinamicoComponent
+  ],
   imports: [
-    BrowserModule,
-    FormsModule,
-    AppRoutingModule,
-    MainModule,
-    SecurityModule,
-    MyCoreModule,
-    CommonServicesModule
+    BrowserModule, FormsModule,
+    AppRoutingModule, MainModule, SecurityModule, MyCoreModule, CommonServicesModule,
   ],
   providers: [
     LoggerService,
     { provide: ERROR_LEVEL, useValue: environment.ERROR_LEVEL },
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
