@@ -7,14 +7,15 @@ import { SecurityModule } from '../security';
 import { RouterModule } from '@angular/router';
 import { CommonServicesModule } from '../common-services';
 import { HomeComponent } from './home/home.component';
+import { CalculadoraComponent } from './calculadora/calculadora.component';
 
 
 @NgModule({
   declarations: [
-    NotificationComponent, NotificationModalComponent, AjaxWaitComponent, HomeComponent,
+    NotificationComponent, NotificationModalComponent, AjaxWaitComponent, HomeComponent, CalculadoraComponent,
   ],
   exports: [
-    NotificationComponent, NotificationModalComponent, AjaxWaitComponent, HomeComponent,
+    NotificationComponent, NotificationModalComponent, AjaxWaitComponent, HomeComponent,CalculadoraComponent,
   ],
   imports: [
     CommonModule, CommonServicesModule, SecurityModule, RouterModule.forChild([]),

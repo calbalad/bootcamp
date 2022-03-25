@@ -11,12 +11,14 @@ import { SecurityModule } from './security';
 import { DemosComponent } from './demos/demos.component';
 import { CommonServicesModule } from './common-services';
 import { DinamicoComponent } from './dinamico/dinamico.component';
+import { ReplacePipe } from './pipes/replace.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     DemosComponent,
-    DinamicoComponent
+    DinamicoComponent,
+    ReplacePipe,
   ],
   imports: [
     BrowserModule, FormsModule,
