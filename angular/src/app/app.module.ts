@@ -12,6 +12,7 @@ import { DemosComponent } from './demos/demos.component';
 import { CommonServicesModule } from './common-services';
 import { DinamicoComponent } from './dinamico/dinamico.component';
 import { ReplacePipe } from './pipes/replace.pipe';
+import { FormularioComponent } from './formulario/formulario.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ReplacePipe } from './pipes/replace.pipe';
     DemosComponent,
     DinamicoComponent,
     ReplacePipe,
+    FormularioComponent,
   ],
   imports: [
     BrowserModule, FormsModule,
