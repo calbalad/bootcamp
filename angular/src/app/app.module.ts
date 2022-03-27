@@ -13,6 +13,8 @@ import { CommonServicesModule } from './common-services';
 import { DinamicoComponent } from './dinamico/dinamico.component';
 import { ReplacePipe } from './pipes/replace.pipe';
 import { FormularioComponent } from './formulario/formulario.component';
+import { ContactosModule } from './contactos/contactos.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,13 +25,20 @@ import { FormularioComponent } from './formulario/formulario.component';
     FormularioComponent,
   ],
   imports: [
-    BrowserModule, FormsModule,
-    AppRoutingModule, MainModule, SecurityModule, MyCoreModule, CommonServicesModule,
+    BrowserModule,
+    FormsModule,
+    ContactosModule,
+    AppRoutingModule,
+    MainModule,
+    SecurityModule,
+    MyCoreModule,
+    CommonServicesModule,
+    HttpClientModule,
   ],
   providers: [
     LoggerService,
     { provide: ERROR_LEVEL, useValue: environment.ERROR_LEVEL },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

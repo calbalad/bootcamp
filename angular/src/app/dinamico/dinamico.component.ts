@@ -3,6 +3,7 @@ import { DemosComponent } from '../demos/demos.component';
 import { FormularioComponent } from '../formulario/formulario.component';
 import { CalculadoraComponent } from '../main/calculadora/calculadora.component';
 import { HomeComponent } from '../main/home/home.component';
+import { ContactosComponent } from '../contactos/componente.component';
 
 @Component({
   selector: 'app-dinamico',
@@ -14,7 +15,9 @@ export class DinamicoComponent implements OnInit {
     { texto: 'inicio', icono: 'fa-solid fa-house', componente: HomeComponent},
     { texto: 'formulario', icono: 'fa-solid fa-chalkboard-user', componente: FormularioComponent},
     { texto: 'demos', icono: 'fa-solid fa-chalkboard-user', componente: DemosComponent},
-    { texto: 'calculadora', icono: 'fa-solid fa-calculator', componente: CalculadoraComponent }
+    { texto: 'calculadora', icono: 'fa-solid fa-calculator', componente: CalculadoraComponent },
+    {texto: 'Contactos', icono: 'fa-solid fa-user', componente: ContactosComponent},
+    {texto: 'Formulario', icono: 'fa-solid fa-pencil', componente:FormularioComponent},
   ]
   actual = this.menu[0].componente
 
