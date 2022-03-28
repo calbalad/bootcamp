@@ -15,6 +15,7 @@ import { ReplacePipe } from './pipes/replace.pipe';
 import { FormularioComponent } from './formulario/formulario.component';
 import { ContactosModule } from './contactos/contactos.module';
 import { HttpClientModule } from '@angular/common/http';
+import { CommonComponentModule } from './common-component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { HttpClientModule } from '@angular/common/http';
     MyCoreModule,
     CommonServicesModule,
     HttpClientModule,
+    CommonComponentModule
   ],
   providers: [
     LoggerService,

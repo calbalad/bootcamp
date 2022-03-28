@@ -14,6 +14,7 @@
         required
         min="0"
       />
+      <app-show-errors-messages [errors]="id.errors"></app-show-errors-messages>
       <div
         class="invalid-feedback"
         [hidden]="!id.hasError('required') || miForm.pristine"
@@ -55,6 +56,7 @@
         minlength="2"
         maxlength="50"
       />
+      <app-show-errors-messages [errors]="nombre.errors"></app-show-errors-messages>
       <div class="invalid-feedback" [hidden]="!nombre.hasError('required')">
         Es obligatorio
       </div>
@@ -78,8 +80,9 @@
         [(ngModel)]="VM.Elemento.apellidos"
         #apellidos="ngModel"
         minlength="2"
-        maxlength="50"
+        maxlength="15"
       />
+      <app-show-errors-messages [errors]="apellidos.errors"></app-show-errors-messages>
       <div
         class="invalid-feedback"
         [hidden]="
@@ -103,6 +106,7 @@
         #telefono="ngModel"
         maxlength="11"
       />
+      <app-show-errors-messages [errors]="telefono.errors"></app-show-errors-messages>
       <div class="invalid-feedback" [hidden]="!telefono.hasError('maxlength')">
         No debe tener mas de 9 dígitos
       </div>
@@ -120,6 +124,7 @@
         email
         maxlength="100"
       />
+      <app-show-errors-messages [errors]="email.errors"></app-show-errors-messages>
       <div class="invalid-feedback" [hidden]="email.valid">
         <span [hidden]="!email.hasError('maxlength')"
           >Debe tener menos 100 caracteres.
@@ -197,6 +202,7 @@
         #avatar="ngModel"
         maxlength="500"
       />
+      <app-show-errors-messages [errors]="avatar.errors"></app-show-errors-messages>
       <div class="invalid-feedback" [hidden]="!avatar.hasError('maxlength')">
         Debe tener menos 500 caracteres.
       </div>

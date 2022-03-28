@@ -18,20 +18,9 @@ export class CalculadoraComponent implements OnInit {
   pressNum(num: string) {
     if (num == ".") {
       if (this.input != "") {
-
         const lastNum = this.getLastOperand()
         console.log(lastNum.lastIndexOf("."))
         if (lastNum.lastIndexOf(".") >= 0) return;
-      }
-    }
-
-    if (num == "0") {
-      if (this.input == "") {
-        return;
-      }
-      const PrevKey = this.input[this.input.length - 1];
-      if (PrevKey === '/' || PrevKey === '*' || PrevKey === '-' || PrevKey === '+') {
-        return;
       }
     }
 
@@ -88,8 +77,6 @@ export class CalculadoraComponent implements OnInit {
     if (lastKey === '/' || lastKey === '*' || lastKey === '-' || lastKey === '+' || lastKey === '.') {
       formula = formula.substr(0, formula.length - 1);
     }
-
-    console.log("Formula " + formula);
     this.result = math.evaluate(formula);
   }
 

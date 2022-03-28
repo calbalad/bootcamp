@@ -1,0 +1,11 @@
+<div class="btn-group" role="group">
+  <button class="btn btn-success" *ngIf="hasSend" (click)="send.emit(null)" [disabled]="sendDisabled">
+    {{ sendText }}
+  </button>
+  <button class="btn btn-danger" *ngIf="hasDelete" (click)="delete.emit(null)">
+    {{ deleteText }}
+  </button>
+  <button class="btn btn-warning" *ngIf="hasCancel" (click)="cancel.emit(null)">
+    {{ cancelText }}
+  </button>
+</div>
