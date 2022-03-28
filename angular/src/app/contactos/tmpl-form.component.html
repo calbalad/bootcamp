@@ -211,7 +211,8 @@
       </div>
     </div>
   </div>
-  <div class="form-group">
+  <app-form-buttons (send)="VM.send()" [send-disabled]="miForm.invalid" [send-text]="'Enviar'" (cancel)="VM.cancel()" [cancel-text]="'Volver'"></app-form-buttons>
+  <!-- <div class="form-group">
     <input
       type="button"
       class="btn btn-success"
@@ -225,5 +226,5 @@
       value="Volver"
       (click)="VM.cancel()"
     />
-  </div>
+  </div> -->
 </form>
